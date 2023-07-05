@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "83BE5554-A9C3-4ADE-A4A2-9C3591E32B0B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "807B517C-CB6A-41BD-8242-5D60F3BDA4FB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/FrameHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "setupRequest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "807B517C-CB6A-41BD-8242-5D60F3BDA4FB - 78f9706f370f300a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.FrameHandler.setupRequest() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/FrameHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "807B517C-CB6A-41BD-8242-5D60F3BDA4FB - 78f9706f370f300a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.FrameHandler.setupRequest() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/FrameHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  uuid = "807B517C-CB6A-41BD-8242-5D60F3BDA4FB - 78f9706f370f300a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.FrameHandler.setupRequest() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/FrameHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "807B517C-CB6A-41BD-8242-5D60F3BDA4FB - 78f9706f370f300a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.FrameHandler.setupRequest() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/FrameHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7194BA64-BE81-44C5-ACCF-DE3DE529569A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/FrameHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "setupRequest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7194BA64-BE81-44C5-ACCF-DE3DE529569A - 78f9706f370f30c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.FrameHandler.setupRequest() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/FrameHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "564">
+               </Location>
+               <Location
+                  uuid = "7194BA64-BE81-44C5-ACCF-DE3DE529569A - 78f9706f370f3791"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.FrameHandler.setupRequest() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/FrameHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "556">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

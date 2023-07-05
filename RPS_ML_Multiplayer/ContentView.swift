@@ -11,8 +11,19 @@ struct ContentView: View {
     @StateObject private var frameHandler = FrameHandler()
     
     var body: some View {
-        FrameView(image: frameHandler.frame)
-            .ignoresSafeArea()
+        ZStack {
+            FrameView(image: frameHandler.frame)
+                .ignoresSafeArea()
+            VStack {
+                Spacer()
+                
+                
+                Text(frameHandler.result)
+                    .padding()
+//                    .buttonModifier()
+            }
+            
+        }
     }
 }
 

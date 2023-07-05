@@ -17,6 +17,9 @@
 		35E9AC342A55ACC9000C369E /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC332A55ACC9000C369E /* FrameView.swift */; };
 		35E9AC362A55AD1E000C369E /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC352A55AD1E000C369E /* FrameHandler.swift */; };
 		35E9AC382A55B569000C369E /* RPS_ML_trained.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC372A55B569000C369E /* RPS_ML_trained.mlmodel */; };
+		35E9AC3A2A55C848000C369E /* GameOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC392A55C847000C369E /* GameOverlay.swift */; };
+		35E9AC3C2A55C8C4000C369E /* PredictionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */; };
+		35E9AC3E2A55C9EE000C369E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC3D2A55C9EE000C369E /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		35E9AC332A55ACC9000C369E /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		35E9AC352A55AD1E000C369E /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
 		35E9AC372A55B569000C369E /* RPS_ML_trained.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RPS_ML_trained.mlmodel; sourceTree = "<group>"; };
+		35E9AC392A55C847000C369E /* GameOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverlay.swift; sourceTree = "<group>"; };
+		35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionButton.swift; sourceTree = "<group>"; };
+		35E9AC3D2A55C9EE000C369E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				35E9AC372A55B569000C369E /* RPS_ML_trained.mlmodel */,
 				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
 				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
+				35E9AC392A55C847000C369E /* GameOverlay.swift */,
+				35E9AC3D2A55C9EE000C369E /* Helpers.swift */,
+				35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */,
 				35E9AC332A55ACC9000C369E /* FrameView.swift */,
 				35E9AC352A55AD1E000C369E /* FrameHandler.swift */,
 				35E9AC0D2A55AC22000C369E /* Assets.xcassets */,
@@ -268,7 +277,10 @@
 			files = (
 				35E9AC342A55ACC9000C369E /* FrameView.swift in Sources */,
 				35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */,
+				35E9AC3A2A55C848000C369E /* GameOverlay.swift in Sources */,
+				35E9AC3E2A55C9EE000C369E /* Helpers.swift in Sources */,
 				35E9AC382A55B569000C369E /* RPS_ML_trained.mlmodel in Sources */,
+				35E9AC3C2A55C8C4000C369E /* PredictionButton.swift in Sources */,
 				35E9AC362A55AD1E000C369E /* FrameHandler.swift in Sources */,
 				35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */,
 			);
@@ -357,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -411,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
