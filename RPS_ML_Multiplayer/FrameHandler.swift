@@ -23,7 +23,7 @@ class FrameHandler: NSObject, ObservableObject{
     private var request = VNDetectHumanHandPoseRequest()
     private var handPoseClassifier: RPS_ML_trained?
     //private var drawingBoxesView: DrawingBoxesView?
-    @Published var result: String = "None"
+    @Published var result: String = ""
     
     // ----- Vision
     

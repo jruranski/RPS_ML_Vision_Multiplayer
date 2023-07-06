@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35D314C22A56A0DA00D12796 /* RPS_ML_trained.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */; };
 		35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */; };
 		35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC0B2A55AC20000C369E /* ContentView.swift */; };
 		35E9AC0E2A55AC22000C369E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E9AC0D2A55AC22000C369E /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		35E9AC272A55AC22000C369E /* RPS_ML_MultiplayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC262A55AC22000C369E /* RPS_ML_MultiplayerUITestsLaunchTests.swift */; };
 		35E9AC342A55ACC9000C369E /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC332A55ACC9000C369E /* FrameView.swift */; };
 		35E9AC362A55AD1E000C369E /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC352A55AD1E000C369E /* FrameHandler.swift */; };
-		35E9AC382A55B569000C369E /* RPS_ML_trained.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC372A55B569000C369E /* RPS_ML_trained.mlmodel */; };
 		35E9AC3A2A55C848000C369E /* GameOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC392A55C847000C369E /* GameOverlay.swift */; };
 		35E9AC3C2A55C8C4000C369E /* PredictionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */; };
 		35E9AC3E2A55C9EE000C369E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC3D2A55C9EE000C369E /* Helpers.swift */; };
@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = RPS_ML_trained.mlmodel; path = ../../../../../../../../../Volumes/Samsung_T5/RPS_ML/RPS_ML_trained.mlmodel; sourceTree = "<group>"; };
 		35E9AC062A55AC20000C369E /* RPS_ML_Multiplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPS_ML_Multiplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPS_ML_MultiplayerApp.swift; sourceTree = "<group>"; };
 		35E9AC0B2A55AC20000C369E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		35E9AC262A55AC22000C369E /* RPS_ML_MultiplayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPS_ML_MultiplayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		35E9AC332A55ACC9000C369E /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		35E9AC352A55AD1E000C369E /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
-		35E9AC372A55B569000C369E /* RPS_ML_trained.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RPS_ML_trained.mlmodel; sourceTree = "<group>"; };
 		35E9AC392A55C847000C369E /* GameOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverlay.swift; sourceTree = "<group>"; };
 		35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionButton.swift; sourceTree = "<group>"; };
 		35E9AC3D2A55C9EE000C369E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		35E9AC082A55AC20000C369E /* RPS_ML_Multiplayer */ = {
 			isa = PBXGroup;
 			children = (
-				35E9AC372A55B569000C369E /* RPS_ML_trained.mlmodel */,
+				35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */,
 				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
 				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
 				35E9AC392A55C847000C369E /* GameOverlay.swift */,
@@ -276,10 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E9AC342A55ACC9000C369E /* FrameView.swift in Sources */,
+				35D314C22A56A0DA00D12796 /* RPS_ML_trained.mlmodel in Sources */,
 				35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */,
 				35E9AC3A2A55C848000C369E /* GameOverlay.swift in Sources */,
 				35E9AC3E2A55C9EE000C369E /* Helpers.swift in Sources */,
-				35E9AC382A55B569000C369E /* RPS_ML_trained.mlmodel in Sources */,
 				35E9AC3C2A55C8C4000C369E /* PredictionButton.swift in Sources */,
 				35E9AC362A55AD1E000C369E /* FrameHandler.swift in Sources */,
 				35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */,

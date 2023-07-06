@@ -9,19 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var frameHandler = FrameHandler()
-    
+    @State private var cameraHidden = false
     var body: some View {
         ZStack {
-            FrameView(image: frameHandler.frame)
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
+         //   FrameView(image: frameHandler.frame)
+           //     .ignoresSafeArea()
+           
                 
                 
-                Text(frameHandler.result)
-                    .padding()
-//                    .buttonModifier()
-            }
+            GameOverlay(result: $frameHandler.result)
+                .background(FrameView(cameraHidden: $cameraHidden, image: frameHandler.frame))
             
         }
     }
