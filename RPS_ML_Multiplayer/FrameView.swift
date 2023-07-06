@@ -23,7 +23,7 @@ struct FrameView: View {
             }
             
             BlurView(style: .systemUltraThinMaterial)
-                .opacity(cameraHidden ? 0 : 1)
+                .opacity(cameraHidden ? 1 : 0)
         }
     }
 }

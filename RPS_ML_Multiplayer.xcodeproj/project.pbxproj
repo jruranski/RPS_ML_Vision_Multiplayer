@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		35D314C22A56A0DA00D12796 /* RPS_ML_trained.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */; };
+		35D314C42A56F13E00D12796 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C32A56F13E00D12796 /* GameModel.swift */; };
+		35D314C62A56F1B400D12796 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C52A56F1B400D12796 /* GameViewModel.swift */; };
+		35D314C92A56F9AA00D12796 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C82A56F9AA00D12796 /* GameTests.swift */; };
 		35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */; };
 		35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC0B2A55AC20000C369E /* ContentView.swift */; };
 		35E9AC0E2A55AC22000C369E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E9AC0D2A55AC22000C369E /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = RPS_ML_trained.mlmodel; path = ../../../../../../../../../Volumes/Samsung_T5/RPS_ML/RPS_ML_trained.mlmodel; sourceTree = "<group>"; };
+		35D314C32A56F13E00D12796 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		35D314C52A56F1B400D12796 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		35D314C82A56F9AA00D12796 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		35E9AC062A55AC20000C369E /* RPS_ML_Multiplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPS_ML_Multiplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPS_ML_MultiplayerApp.swift; sourceTree = "<group>"; };
 		35E9AC0B2A55AC20000C369E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35D314C72A56F1B900D12796 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				35E9AC392A55C847000C369E /* GameOverlay.swift */,
+				35D314C32A56F13E00D12796 /* GameModel.swift */,
+				35D314C52A56F1B400D12796 /* GameViewModel.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		35E9ABFD2A55AC20000C369E = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +125,7 @@
 				35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */,
 				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
 				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
-				35E9AC392A55C847000C369E /* GameOverlay.swift */,
+				35D314C72A56F1B900D12796 /* Game */,
 				35E9AC3D2A55C9EE000C369E /* Helpers.swift */,
 				35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */,
 				35E9AC332A55ACC9000C369E /* FrameView.swift */,
@@ -132,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				35E9AC1A2A55AC22000C369E /* RPS_ML_MultiplayerTests.swift */,
+				35D314C82A56F9AA00D12796 /* GameTests.swift */,
 			);
 			path = RPS_ML_MultiplayerTests;
 			sourceTree = "<group>";
@@ -277,11 +294,13 @@
 			files = (
 				35E9AC342A55ACC9000C369E /* FrameView.swift in Sources */,
 				35D314C22A56A0DA00D12796 /* RPS_ML_trained.mlmodel in Sources */,
+				35D314C42A56F13E00D12796 /* GameModel.swift in Sources */,
 				35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */,
 				35E9AC3A2A55C848000C369E /* GameOverlay.swift in Sources */,
 				35E9AC3E2A55C9EE000C369E /* Helpers.swift in Sources */,
 				35E9AC3C2A55C8C4000C369E /* PredictionButton.swift in Sources */,
 				35E9AC362A55AD1E000C369E /* FrameHandler.swift in Sources */,
+				35D314C62A56F1B400D12796 /* GameViewModel.swift in Sources */,
 				35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E9AC1B2A55AC22000C369E /* RPS_ML_MultiplayerTests.swift in Sources */,
+				35D314C92A56F9AA00D12796 /* GameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +522,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7EA538H3Z8;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jacob-Ruranski.RPS-ML-MultiplayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,7 +542,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7EA538H3Z8;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Jacob-Ruranski.RPS-ML-MultiplayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

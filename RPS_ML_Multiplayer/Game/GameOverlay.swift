@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameOverlay: View {
+    @ObservedObject var viewModel: GameViewModel = GameViewModel()
     @Binding var result: String
     
     
