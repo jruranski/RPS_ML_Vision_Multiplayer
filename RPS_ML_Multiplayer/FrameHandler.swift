@@ -101,7 +101,9 @@ class FrameHandler: NSObject, ObservableObject{
         videoOutput.connection(with: .video)?.videoOrientation = .portrait
     }
     
-    
+    func stopCapture() {
+        captureSession.stopRunning()
+    }
     
 }
 

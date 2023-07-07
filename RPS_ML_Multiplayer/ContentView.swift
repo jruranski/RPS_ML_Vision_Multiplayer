@@ -22,7 +22,9 @@ struct ContentView: View {
                 
             GameOverlay(show: $show, viewModel: viewModel, result: viewModel.isGameOver ? .constant(frameHandler.result) : $frameHandler.result, shouldStopCamera: $frameHandler.shouldStopCamera)
                 .background(FrameView(cameraHidden: $frameHandler.shouldStopCamera, image: frameHandler.frame))
-            
+                .onDisappear {
+                    self.frameHandler.stopCapture()
+                }
         }
     }
 }
