@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35D314C22A56A0DA00D12796 /* RPS_ML_trained.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */; };
 		35D314C42A56F13E00D12796 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C32A56F13E00D12796 /* GameModel.swift */; };
 		35D314C62A56F1B400D12796 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C52A56F1B400D12796 /* GameViewModel.swift */; };
 		35D314C92A56F9AA00D12796 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314C82A56F9AA00D12796 /* GameTests.swift */; };
+		35D314CB2A56FDE100D12796 /* GamePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314CA2A56FDE100D12796 /* GamePerformanceTests.swift */; };
+		35D314CD2A57141B00D12796 /* RPS_ML_trained.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35D314CC2A57141B00D12796 /* RPS_ML_trained.mlmodel */; };
+		35D314CF2A5714A000D12796 /* OpponentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314CE2A5714A000D12796 /* OpponentDataModel.swift */; };
+		35D314D12A57163700D12796 /* RoundDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314D02A57163700D12796 /* RoundDetail.swift */; };
+		35D314D32A57193900D12796 /* RPSButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314D22A57193900D12796 /* RPSButtons.swift */; };
+		35D314D62A57F6E200D12796 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314D52A57F6E200D12796 /* HomeView.swift */; };
+		35D314D82A58098C00D12796 /* OnlinePlayerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D314D72A58098C00D12796 /* OnlinePlayerRow.swift */; };
 		35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */; };
 		35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC0B2A55AC20000C369E /* ContentView.swift */; };
 		35E9AC0E2A55AC22000C369E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E9AC0D2A55AC22000C369E /* Assets.xcassets */; };
@@ -43,10 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = RPS_ML_trained.mlmodel; path = ../../../../../../../../../Volumes/Samsung_T5/RPS_ML/RPS_ML_trained.mlmodel; sourceTree = "<group>"; };
 		35D314C32A56F13E00D12796 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		35D314C52A56F1B400D12796 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		35D314C82A56F9AA00D12796 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		35D314CA2A56FDE100D12796 /* GamePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePerformanceTests.swift; sourceTree = "<group>"; };
+		35D314CC2A57141B00D12796 /* RPS_ML_trained.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RPS_ML_trained.mlmodel; sourceTree = "<group>"; };
+		35D314CE2A5714A000D12796 /* OpponentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentDataModel.swift; sourceTree = "<group>"; };
+		35D314D02A57163700D12796 /* RoundDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDetail.swift; sourceTree = "<group>"; };
+		35D314D22A57193900D12796 /* RPSButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPSButtons.swift; sourceTree = "<group>"; };
+		35D314D52A57F6E200D12796 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		35D314D72A58098C00D12796 /* OnlinePlayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePlayerRow.swift; sourceTree = "<group>"; };
 		35E9AC062A55AC20000C369E /* RPS_ML_Multiplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPS_ML_Multiplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPS_ML_MultiplayerApp.swift; sourceTree = "<group>"; };
 		35E9AC0B2A55AC20000C369E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,10 +105,20 @@
 			isa = PBXGroup;
 			children = (
 				35E9AC392A55C847000C369E /* GameOverlay.swift */,
+				35D314D42A5719BF00D12796 /* OverlayElements */,
 				35D314C32A56F13E00D12796 /* GameModel.swift */,
 				35D314C52A56F1B400D12796 /* GameViewModel.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		35D314D42A5719BF00D12796 /* OverlayElements */ = {
+			isa = PBXGroup;
+			children = (
+				35D314D22A57193900D12796 /* RPSButtons.swift */,
+				35D314D02A57163700D12796 /* RoundDetail.swift */,
+			);
+			path = OverlayElements;
 			sourceTree = "<group>";
 		};
 		35E9ABFD2A55AC20000C369E = {
@@ -122,8 +144,9 @@
 		35E9AC082A55AC20000C369E /* RPS_ML_Multiplayer */ = {
 			isa = PBXGroup;
 			children = (
-				35D314C12A56A0DA00D12796 /* RPS_ML_trained.mlmodel */,
+				35D314CC2A57141B00D12796 /* RPS_ML_trained.mlmodel */,
 				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
+				35D314D52A57F6E200D12796 /* HomeView.swift */,
 				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
 				35D314C72A56F1B900D12796 /* Game */,
 				35E9AC3D2A55C9EE000C369E /* Helpers.swift */,
@@ -132,6 +155,8 @@
 				35E9AC352A55AD1E000C369E /* FrameHandler.swift */,
 				35E9AC0D2A55AC22000C369E /* Assets.xcassets */,
 				35E9AC0F2A55AC22000C369E /* Preview Content */,
+				35D314CE2A5714A000D12796 /* OpponentDataModel.swift */,
+				35D314D72A58098C00D12796 /* OnlinePlayerRow.swift */,
 			);
 			path = RPS_ML_Multiplayer;
 			sourceTree = "<group>";
@@ -149,6 +174,7 @@
 			children = (
 				35E9AC1A2A55AC22000C369E /* RPS_ML_MultiplayerTests.swift */,
 				35D314C82A56F9AA00D12796 /* GameTests.swift */,
+				35D314CA2A56FDE100D12796 /* GamePerformanceTests.swift */,
 			);
 			path = RPS_ML_MultiplayerTests;
 			sourceTree = "<group>";
@@ -293,15 +319,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E9AC342A55ACC9000C369E /* FrameView.swift in Sources */,
-				35D314C22A56A0DA00D12796 /* RPS_ML_trained.mlmodel in Sources */,
+				35D314D62A57F6E200D12796 /* HomeView.swift in Sources */,
 				35D314C42A56F13E00D12796 /* GameModel.swift in Sources */,
+				35D314CF2A5714A000D12796 /* OpponentDataModel.swift in Sources */,
 				35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */,
 				35E9AC3A2A55C848000C369E /* GameOverlay.swift in Sources */,
 				35E9AC3E2A55C9EE000C369E /* Helpers.swift in Sources */,
 				35E9AC3C2A55C8C4000C369E /* PredictionButton.swift in Sources */,
 				35E9AC362A55AD1E000C369E /* FrameHandler.swift in Sources */,
+				35D314D32A57193900D12796 /* RPSButtons.swift in Sources */,
+				35D314CD2A57141B00D12796 /* RPS_ML_trained.mlmodel in Sources */,
+				35D314D82A58098C00D12796 /* OnlinePlayerRow.swift in Sources */,
 				35D314C62A56F1B400D12796 /* GameViewModel.swift in Sources */,
 				35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */,
+				35D314D12A57163700D12796 /* RoundDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +342,7 @@
 			files = (
 				35E9AC1B2A55AC22000C369E /* RPS_ML_MultiplayerTests.swift in Sources */,
 				35D314C92A56F9AA00D12796 /* GameTests.swift in Sources */,
+				35D314CB2A56FDE100D12796 /* GamePerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

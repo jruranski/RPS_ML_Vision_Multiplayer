@@ -11,7 +11,7 @@ import SwiftUI
 struct RPS_ML_MultiplayerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

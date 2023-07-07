@@ -16,7 +16,13 @@ class GameModel {
     var enemyMove: Move = .none
     var winner: Winner = .none
     
-    private let maxScore = 3
+    var roundHistory: [RoundResult] = []
+    
+    let maxScore = 3
+    
+    init() {
+        print("initializing gamemodel")
+    }
     
     func getGameWinner() -> Winner {
         if playerScore >= maxScore && playerScore - enemyScore >= 2 {
@@ -30,11 +36,20 @@ class GameModel {
     
 }
 
-enum Move {
-    case rock
-    case paper
-    case scissors
-    case none
+
+struct RoundResult {
+    var roundNumber = 0
+    var winner: Winner
+    var winningMove: Move
+    
+    
+}
+
+enum Move: String {
+    case rock = "Rock"
+    case paper = "Paper"
+    case scissors = "Scissors"
+    case none = ""
 }
 
 enum Winner {

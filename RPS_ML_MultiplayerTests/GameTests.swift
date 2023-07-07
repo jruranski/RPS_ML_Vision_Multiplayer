@@ -35,7 +35,7 @@ final class GameTests: XCTestCase {
         }
 
         func testResolveRound() {
-            // Assuming generateEnemyMove is refactored to return a predictable result
+            
             sut.game.enemyMove = .rock
             sut.resolveRound(playerMove: .rock)
             XCTAssertEqual(sut.game.rounds, 1)
@@ -53,6 +53,56 @@ final class GameTests: XCTestCase {
             XCTAssertEqual(sut.roundResult, .enemy)
             XCTAssertEqual(sut.game.enemyScore, 1)
         }
+    
+    func testResolveRoundPlayerMoveNone() {
+        sut.game.enemyMove = .rock
+        sut.resolveRound(playerMove: .none)
+        XCTAssertEqual(sut.game.rounds, 1)
+        XCTAssertEqual(sut.roundResult, .none)
+    }
+
+    func testResolveRoundEnemyMoveNone() {
+        sut.game.enemyMove = .none
+        sut.resolveRound(playerMove: .rock)
+        XCTAssertEqual(sut.game.rounds, 1)
+        XCTAssertEqual(sut.roundResult, .none)
+        XCTAssertEqual(sut.game.playerScore, 0)
+    }
+
+    func testResolveRoundBothMoveNone() {
+        sut.game.enemyMove = .none
+        sut.resolveRound(playerMove: .none)
+        XCTAssertEqual(sut.game.rounds, 1)
+        XCTAssertEqual(sut.roundResult, .none)
+    }
+
+    func testResolveRoundSameMoveTwice() {
+        sut.game.enemyMove = .scissors
+        sut.resolveRound(playerMove: .scissors)
+        XCTAssertEqual(sut.game.rounds, 1)
+        XCTAssertEqual(sut.roundResult, .draw)
+
+        sut.game.enemyMove = .scissors
+        sut.resolveRound(playerMove: .scissors)
+        XCTAssertEqual(sut.game.rounds, 2)
+        XCTAssertEqual(sut.roundResult, .draw)
+    }
+
+    func testResolveRoundConsecutiveWinsPlayer() {
+        sut.game.enemyMove = .scissors
+        sut.resolveRound(playerMove: .rock)
+        XCTAssertEqual(sut.game.rounds, 1)
+        XCTAssertEqual(sut.roundResult, .player)
+        XCTAssertEqual(sut.game.playerScore, 1)
+
+        sut.game.enemyMove = .scissors
+        sut.resolveRound(playerMove: .rock)
+        XCTAssertEqual(sut.game.rounds, 2)
+        XCTAssertEqual(sut.roundResult, .player)
+        XCTAssertEqual(sut.game.playerScore, 2)
+    }
+    
+    
 
         func testGameOver() {
             // Assume max score to win is 2

@@ -9,18 +9,50 @@ import Foundation
 
 
 class GameViewModel: ObservableObject {
-    @Published var game = GameModel()
+    @Published var game: GameModel
+    
+    @Published var opponent: OpponentModel
+    
     @Published var isGameOver = false
     @Published var endRoundTitle = "Draw"
     @Published var endRoundImageName = "xmark"
     @Published var roundResult: Winner = .none
+    @Published var enemyMoveString = "Paper"
+    @Published var gameFinished = false
+    
+    init() {
+        game = GameModel()
+        opponent = OpponentModel()
+    }
     
     func resolveRound(playerMove: Move) {
-        game.rounds += 1
+       isGameOver = true
         game.playerMove = playerMove
-        if game.enemyMove == nil {   game.enemyMove = generateEnemyMove() } // prototyping
+        
+      //  if game.enemyMove == .none {   game.enemyMove = generateEnemyMove() } // prototyping
+        
+        // wait or fetch the enemy move
+        
+        //then
+        enemyMoveString = game.enemyMove.rawValue
+        
         calculateRound()
     }
+    
+    func fetchEnemyMove() {
+        opponent.fetchCurrentMove()
+        game.enemyMove = opponent.move
+    }
+    
+    func nextRound() {
+        game.playerMove = .none
+        game.enemyMove = .none
+        game.rounds += 1
+        
+        
+        isGameOver = false
+    }
+    
     
     // Generate random move if enemy does not answer in time
     private func generateEnemyMove() -> Move {
@@ -30,10 +62,10 @@ class GameViewModel: ObservableObject {
     }
     
     // Compare two moves to determine the winner
-    private func compareMoves() -> Winner {
+    internal func compareMoves() -> Winner {
         
         // check whether it's not a draw or failed to play
-        guard game.playerMove != .none else {return .none}
+        guard game.playerMove != .none && game.enemyMove != .none else {return .none}
         guard game.playerMove != game.enemyMove else { return .draw}
         
         // calculate other options
@@ -53,9 +85,17 @@ class GameViewModel: ObservableObject {
         if winner == .player {
             game.playerScore += 1
                 // add info for user about the outcome
+            endRoundTitle = "Round won!"
+            endRoundImageName = "trophy.circle"
         }else if winner == .enemy {
             game.enemyScore += 1
             
+            endRoundTitle = "Round lost..."
+            endRoundImageName =  "xmark.seal"
+        }else {
+            
+            endRoundTitle = "Draw"
+            endRoundImageName = "repeat.circle"
         }
         
         roundResult = winner
@@ -67,22 +107,27 @@ class GameViewModel: ObservableObject {
         
         
         // reset the moves
-        game.playerMove = .none
-        game.enemyMove = .none
-        
+//        game.playerMove = .none
+//        game.enemyMove = .none
+//
         
         
     }
     
     private func gameOver(champion: Winner) {
-        isGameOver = true
+        gameFinished = true
         let playerWon = champion == .player
         endRoundTitle = playerWon ? "You Won!" : "Enemy Won..."
         endRoundImageName = playerWon ? "checkmark" : "xmark"
         
+        
+        
+        
         // save game
         
         // exit the game
+        
+        
         
         
     }
@@ -101,9 +146,13 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    internal func moveToString(_ move: Move) -> String {
+        return ""
+    }
+    
     // Sets the player's move from the provided String
     public func setMove(playerMove: String) {
-        game.playerMove = moveFromString(playerMove)
+        game.playerMove = Move(rawValue: playerMove) ?? .none
     }
     
     

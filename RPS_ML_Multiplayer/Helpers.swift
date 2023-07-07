@@ -21,8 +21,8 @@ struct ButtonModifier: ViewModifier {
             .padding(padding)
             .background(backgroundColor.opacity(opacity))
             .mask(RoundedRectangle(cornerRadius: radius, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).stroke((backgroundColor.darker(by: 10) ?? backgroundColor).opacity(0.7), lineWidth: 1).blendMode(.overlay))
-            .shadow(color: (backgroundColor == Color("frontback") ? Color.black : backgroundColor).opacity(opacity > 0.5 ? 0.14 : 0), radius: 8 + radius / 2, x: 0, y: 4)
+            .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).stroke((backgroundColor.darker(by: 10) ?? backgroundColor).opacity(0.7), lineWidth: 2).blendMode(.overlay))
+            .shadow(color: (backgroundColor == Color(.systemBackground) ? Color.black : backgroundColor).opacity(opacity > 0.5 ? 0.14 : 0.2), radius: 8 + radius / 2, x: 0, y: 4)
     }
     
 }
@@ -39,7 +39,7 @@ struct BlurButtonModifier: ViewModifier {
             .padding(padding)
             .background(background.opacity(opacity))
             .mask(RoundedRectangle(cornerRadius: radius, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).stroke((Color(.systemGray5)).opacity(0.9), lineWidth: 2).blendMode(.overlay))
+            .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).stroke((Color(.systemGray5)).opacity(0.9), lineWidth: 3).blendMode(.overlay))
           //  .shadow(color: Color.black.opacity(0.14), radius: 8, x: 0, y: 4)
     }
     

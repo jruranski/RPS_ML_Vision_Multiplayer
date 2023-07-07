@@ -24,6 +24,7 @@ struct FrameView: View {
             
             BlurView(style: .systemUltraThinMaterial)
                 .opacity(cameraHidden ? 1 : 0)
+                .animation(.easeInOut(duration: 1), value: cameraHidden)
         }
     }
 }

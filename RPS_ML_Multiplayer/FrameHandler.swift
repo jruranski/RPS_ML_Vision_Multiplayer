@@ -12,6 +12,7 @@ import Vision
 
 class FrameHandler: NSObject, ObservableObject{
     @Published var frame: CGImage?
+    @Published var shouldStopCamera = false
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue", qos: .userInteractive)
@@ -24,6 +25,11 @@ class FrameHandler: NSObject, ObservableObject{
     private var handPoseClassifier: RPS_ML_trained?
     //private var drawingBoxesView: DrawingBoxesView?
     @Published var result: String = ""
+    
+    // label prediction smoothing
+    private var lastLabel: String? = nil
+    private var lastLabelCount: Int = 0
+    private let changeThreshold = 4  // Change this value to increase or decrease the smoothing
     
     // ----- Vision
     
@@ -157,6 +163,8 @@ extension FrameHandler {
 //        request?.imageCropAndScaleOption = .centerCrop
     }
     
+   
+
     private func handleSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
         let handler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up, options: [:])
         
@@ -177,12 +185,25 @@ extension FrameHandler {
                 print(output.labelProbabilities)
                 
                 DispatchQueue.main.async {
-                    self.result = output.label
+                    // Update the lastLabel and its count
+                    if self.lastLabel == output.label {
+                        self.lastLabelCount += 1
+                    } else {
+                        self.lastLabel = output.label
+                        self.lastLabelCount = 1
+                    }
+                    
+                    // Only update the result if the prediction has been the same for a certain number of times
+                    if !self.shouldStopCamera { // check whether the camera ml recognition is enabled
+                        if self.lastLabelCount >= self.changeThreshold {
+                            self.result = output.label
+                        }
+                    }
                 }
-            }catch let error {
+            } catch let error {
                 print(error.localizedDescription)
             }
-        }catch let error {
+        } catch let error {
             print(error.localizedDescription)
             captureSession.stopRunning()
             fatalError(error.localizedDescription)
