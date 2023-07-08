@@ -113,8 +113,9 @@ extension FrameHandler:  AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let cgImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else {return}
         
-        DispatchQueue.main.async { [unowned self] in
-            self.frame = cgImage
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            self.frame = cgImage // #todo check whether the bug is fixed
         }
     }
     

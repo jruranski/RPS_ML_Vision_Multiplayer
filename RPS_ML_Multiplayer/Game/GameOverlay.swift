@@ -40,6 +40,8 @@ struct GameOverlay: View {
             
             .padding(.top, 60)
                 .padding(.horizontal)
+                .opacity(show ? 1 : 0)
+                .animation(.easeIn.delay(2), value: show)
             
             Spacer()
             HStack {
@@ -165,6 +167,14 @@ struct GameOverlay: View {
         }.ignoresSafeArea(.all)
             .onChange(of: viewModel.isGameOver) { newValue in
                 shouldStopCamera = newValue
+            }
+            .onChange(of: viewModel.gameFinished) { newValue in
+                
+                // #todo display the game over screen first!
+                
+                withAnimation(.easeInOut) {
+                    self.show = newValue
+                }
             }
     }
 }

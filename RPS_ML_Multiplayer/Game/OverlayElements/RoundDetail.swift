@@ -48,7 +48,7 @@ struct RoundDetail: View {
             
             
             .padding(.horizontal)
-            .modifier(ButtonModifier(backgroundColor: viewModel.roundResult == .player ? .blue : .red, padding: 12, radius: 20, opacity: 0.14))
+            .modifier(ButtonModifier(backgroundColor: viewModel.roundResult == .enemy ? .red : .blue, padding: 12, radius: 20, opacity: 0.14))
             .padding()
             
             
