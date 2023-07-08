@@ -11,13 +11,46 @@ struct HomeView: View {
     
     @State var onlinePlayers: [OpponentModel] = [OpponentModel(name: "Jacek", id: UUID(), move: .none), OpponentModel(name: "Wacek", id: UUID(), move: .none)]
     @State var showContentView: Bool = false
-    
+   @State var showProfileView: Bool = false
+   @State var showSettingsView: Bool = false
+    @State private var signedIn: Bool = false
+
+
     var body: some View {
         VStack {
-            
+            HStack {
             Text("RPS")
                 .font(.system(.title, design: .rounded, weight: .bold))
-         
+         Spacer()
+        Image(systemName: "person") // Sign In button
+                .font(.system(.title, design: .rounded, weight: .bold))
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        self.showProfileView.toggle()
+                    }
+                }
+                .fullScreenCover(isPresented: $showProfileView) {
+                    if signedIn {
+                    ProfileView(show: $showProfileView)
+                    }else { 
+                        SignUpView()
+                    }
+                }
+
+            Image(systemName: "gear")
+                .font(.system(.title, design: .rounded, weight: .bold))
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        self.showSettingsView.toggle()
+                    }
+                }
+                .fullScreenCover(isPresented: $showSettingsView) {
+                    SettingsView(show: $showSettingsView)
+                }
+
+
+
+            }
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
                     ForEach(onlinePlayers, id: \.id) { player in
@@ -98,3 +131,7 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+enum SignedInState {
+    case signedIn
+    case signedOut
+}

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CoreData
+//import CoreData
 import AudioToolbox
 
 struct SignUpView: View {
@@ -27,7 +27,7 @@ struct SignUpView: View {
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
     
-    @Environment(\.managedObjectContext) private var viewContext
+//    @Environment(\.managedObjectContext) private var viewContext
    // @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Account.userSince, ascending: true)], animation: .default) private var savedAccounts: FetchedResults<Account>
     
     private let generator = UISelectionFeedbackGenerator()
