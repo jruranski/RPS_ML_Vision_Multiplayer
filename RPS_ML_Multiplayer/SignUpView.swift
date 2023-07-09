@@ -8,8 +8,9 @@
 import SwiftUI
 //import CoreData
 import AudioToolbox
-// import MSAL 
-// TODO - Add MSAL
+import FirebaseAuth
+
+
 struct SignUpView: View {
 
 // TODO: - Add MSAL
@@ -246,42 +247,39 @@ struct SignUpView: View {
     }
     
     func signUp() {
-        // TODO uncomment when ready to add auth
-// do {
-//         let authority = try MSALAADAuthority(url: URL(string: "https://login.microsoftonline.com/{your-tenant-id}")!)
-
-//         let config = MSALPublicClientApplicationConfig(clientId: "{your-client-id}", redirectUri: nil, authority: authority)
-//         self.applicationContext = try MSALPublicClientApplication(configuration: config)
-
-//         let webParameters = MSALWebviewParameters(authPresentationViewController: self)
-//         let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webParameters)
-
-//         applicationContext.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-//             if let error = error {
-//                 print("Could not acquire token: \(error)")
-//                 return
-//             }
-
-//             guard let result = result else {
-//                 print("Could not acquire token: No result returned")
-//                 return
-//             }
-
-//             print("User signed up with token: \(result.accessToken)")
-//         })
-//     } catch {
-//         print("Unable to create application context: \(error)")
-//     }
+       if signupToggle {Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            guard error == nil else {
+                self.alertTitle = "uh-oh"
+                
+                self.alertMessage = error!.localizedDescription
+                self.showAlertView.toggle()
+                return
+            }
+            print("User signed up")
+       }}else{
+           Auth.auth().signIn(withEmail: email, password: password) { result, error in
+               guard error == nil else {
+                   print(error!.localizedDescription)
+                   return
+               }
+               print("User signed in")
+           }
+       }
     }
-
+    
     func sendPasswordResetEmail() {
-
-    if let url = URL(string: "https://passwordreset.microsoftonline.com/") {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        Auth.auth().sendPasswordReset(withEmail: email) {
+            error in
+            guard error == nil else{
+                print(error!.localizedDescription)
+                return
+            }
+            self.alertTitle = "password reset sent"
+            self.alertMessage = "Check your inbox for a reset email"
+            self.showAlertView.toggle()
+        }
     }
-
-    }
-
+    
     
     
     
