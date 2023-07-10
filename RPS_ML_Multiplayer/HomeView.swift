@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    @StateObject var serverManager: ServerManager = ServerManager()
     
     @State var onlinePlayers: [OpponentModel] = [OpponentModel(name: "Jacek", id: UUID(), move: .none), OpponentModel(name: "Wacek", id: UUID(), move: .none)]
     @State var showContentView: Bool = false
@@ -20,25 +22,29 @@ struct HomeView: View {
         VStack {
             HStack {
             Text("RPS")
-                .font(.system(.title, design: .rounded, weight: .bold))
+                .font(.system(.largeTitle, design: .rounded, weight: .bold))
          Spacer()
         Image(systemName: "person") // Sign In button
-                .font(.system(.title, design: .rounded, weight: .bold))
+                .font(.system(.headline, design: .rounded, weight: .semibold))
                 .onTapGesture {
+                    
+                    //connect to auth
+                    
+                    
                     withAnimation(.easeInOut) {
                         self.showProfileView.toggle()
                     }
                 }
                 .fullScreenCover(isPresented: $showProfileView) {
-                    if signedIn {
+                    if serverManager.isSignedIn() {
                     ProfileView(show: $showProfileView)
                     }else { 
-                        SignUpView()
+                        SignUpView(show: $showProfileView, serverManager: serverManager)
                     }
                 }
 
             Image(systemName: "gear")
-                .font(.system(.title, design: .rounded, weight: .bold))
+                .font(.system(.headline, design: .rounded, weight: .semibold))
                 .onTapGesture {
                     withAnimation(.easeInOut) {
                         self.showSettingsView.toggle()
@@ -51,15 +57,16 @@ struct HomeView: View {
 
 
             }
+            .padding()
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
                     ForEach(onlinePlayers, id: \.id) { player in
                         OnlinePlayerRow(player: player)
                     }
-                }
+                }.padding()
             }
             .frame(height: 60 * 5)
-            .padding()
+            
             .background(Color(.systemBackground))
             .mask(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(Color(.systemGray6), lineWidth: 2))
@@ -68,6 +75,7 @@ struct HomeView: View {
             
             
             
+            Spacer()
             
             Button(action: {
              // invite players and start game
@@ -75,7 +83,7 @@ struct HomeView: View {
             }) {
                 HStack {
                     Spacer()
-                    Text("PLAY")
+                    Text("START PARTY")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)
@@ -89,6 +97,28 @@ struct HomeView: View {
                 .padding()
                 
             }
+            
+            Button(action: {
+             // invite players and start game
+             
+            }) {
+                HStack {
+                    Spacer()
+                    Text("JOIN")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+                    .foregroundColor(.white)
+                    .padding()
+                    Spacer()
+            }
+                .background(Color.blue)
+                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color.blue.lighter() ?? .blue, lineWidth: 2).opacity(0.8).blendMode(.overlay))
+                .padding()
+                
+            }
+            
             
             Button(action: {
              // invite players and start game
@@ -121,6 +151,17 @@ struct HomeView: View {
             
         }) {
             ContentView(show: $showContentView)
+        }
+        .onChange(of: scenePhase) { newValue in
+            switch newValue {
+            case .active:
+                print("app is active")
+                serverManager.setOnlineStatus(isOnline: true)
+            case .inactive:
+                serverManager.setOnlineStatus(isOnline: false)
+            default:
+                print("unknown state")
+            }
         }
     }
 }

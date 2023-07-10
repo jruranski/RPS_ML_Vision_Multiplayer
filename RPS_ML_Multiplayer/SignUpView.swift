@@ -1,9 +1,9 @@
 //
 //  ContentView.swift
-//  SwiftUI Advanced
+//  RPS_ML_Multiplayer
 //
 //  Created by Jakub Ruranski on 26/10/2021.
-//
+//  Refactored by Jakub Ruranski on 09/06/2023.
 
 import SwiftUI
 //import CoreData
@@ -13,9 +13,10 @@ import FirebaseAuth
 
 struct SignUpView: View {
 
-// TODO: - Add MSAL
-// var applicationContext: MSALPublicClientApplication!
 
+    @Binding var show: Bool
+// var applicationContext: MSALPublicClientApplication!
+    @ObservedObject var serverManager: ServerManager
     @State var email: String = ""
     @State var password: String = ""
     @State var editingEmailTextField = false
@@ -45,18 +46,34 @@ struct SignUpView: View {
                 .aspectRatio( contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
                 .opacity(fadeToggle ? 1.0 : 0.0)
-            
+                .onTapGesture {
+                    UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.endEditing(true)
+                }
             Color("secondaryBackground")
                 .edgesIgnoringSafeArea(.all)
                 .opacity(fadeToggle ? 0 : 1)
             
-            
             VStack {
+                
+                HStack {
+                    TextfieldIcon(iconName: "xmark", currentlyEditing: .constant(false), passedImage: .constant(nil))
+                        .onTapGesture {
+                            withAnimation(.easeInOut) {
+                                self.show.toggle()
+                            }
+                        }
+                    Spacer()
+                }.padding()
+                    .padding(.top)
+            Spacer()
+                // main card
+            VStack {
+                
                 VStack(alignment: .leading, spacing: 16) {
                     Text(signupToggle ? "Sign up" : "Sign in")
                         .font(Font.largeTitle.bold())
                         .foregroundColor(.white)
-                    Text("Access to 120 hours of courses, tutorials and livestreams")
+                    Text("Get started with the best rock, paper scissors game you have ever played!")
                         .font(.subheadline)
                         .foregroundColor(Color.white.opacity(0.7))
                     HStack(spacing: 12) {
@@ -83,8 +100,8 @@ struct SignUpView: View {
                         .textContentType(.emailAddress)
                     }.frame(height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.white, lineWidth: 1.0)
-                                    .blendMode(.overlay)
+                            .stroke(Color.white, lineWidth: 1.0)
+                            .blendMode(.overlay)
                         )
                         .background(Color("secondaryBackground").cornerRadius(16).opacity(0.8))
                     
@@ -92,7 +109,24 @@ struct SignUpView: View {
                     HStack(spacing: 12) {
                         TextfieldIcon(iconName: "key.fill", currentlyEditing: $editingPasswordTextField, passedImage: .constant(nil))
                             .scaleEffect(passwordIconBounce ? 1.2 : 1.0)
-                        TextField("Password", text: $password) { isEditing in
+                        SecureField("Password", text: $password)
+//                        { isEditing in
+//                            editingEmailTextField = false
+//                            editingPasswordTextField = isEditing
+//
+//                            if isEditing {
+//                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
+//                                    passwordIconBounce.toggle()
+//                                }
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+//                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
+//                                        passwordIconBounce.toggle()
+//                                    }
+//                                })
+//                            }
+//                        }
+                        .onChange(of: password, perform: { changed in
+                            let isEditing = true
                             editingEmailTextField = false
                             editingPasswordTextField = isEditing
                             
@@ -106,15 +140,19 @@ struct SignUpView: View {
                                     }
                                 })
                             }
-                        }
+                        })
+                        .onSubmit({
+                            editingPasswordTextField = false
+                        })
                         .colorScheme(.dark)
                         .foregroundColor(Color.white.opacity(0.7))
                         .autocapitalization(.none)
-                        .textContentType(.password)
+//                        .textContentType(.password)
+//                        .keyboardType(.password)
                     }.frame(height: 50)
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.white, lineWidth: 1.0)
-                                    .blendMode(.overlay)
+                            .stroke(Color.white, lineWidth: 1.0)
+                            .blendMode(.overlay)
                         )
                         .background(Color("secondaryBackground").cornerRadius(16).opacity(0.8))
                         .onTapGesture {
@@ -125,41 +163,12 @@ struct SignUpView: View {
                     GradientButton(buttonTitle: signupToggle ? "Create account" : "Sign in", buttonAction: {
                         generator.selectionChanged()
                         // # todo add signup
-                      //  signUp()
+                        	  signUp()
                     })
-                        .onAppear {
-                            // #todo change to azure auth
-//                            Auth.auth().addStateDidChangeListener { auth, user in
-//                                if let currentUser = user {
-//                                    if savedAccounts.count == 0 {
-//                                        // add data to Core Data
-//
-//                                        let userDataToSave = Account(context: viewContext)
-//                                        userDataToSave.name = currentUser.displayName
-//                                        userDataToSave.bio = nil
-//                                        userDataToSave.userID = currentUser.uid
-//                                        userDataToSave.numberOfCertificates = 0
-//                                        userDataToSave.twitter = nil
-//                                        userDataToSave.website = nil
-//                                        userDataToSave.profileImage = nil
-//                                        userDataToSave.userSince = Date()
-//
-//                                        do {
-//                                            try viewContext.save()
-//                                            DispatchQueue.main.async {
-//                                                showProfileView.toggle()
-//                                            }
-//                                        }catch let error {
-//                                            alertTitle = "Could not create an account"
-//                                            alertMessage = error.localizedDescription
-//                                            showAlertView.toggle()
-//                                        }
-//                                    }else{
-//                                        showProfileView.toggle()
-//                                    }
-//                                }
-//                            }
-                        }
+                    .onAppear {
+                        // #todo change to azure auth
+                        serverManager.tryLogin()
+                    }
                     if signupToggle {
                         Text("by clicking on sign up you agree to our terms of service and privacy policy")
                             .font(.footnote)
@@ -194,31 +203,31 @@ struct SignUpView: View {
                                     .font(Font.footnote.bold())
                             }
                         }
-                            if !signupToggle {
-                                Button(action:{
-                                    
-                                    sendPasswordResetEmail()}) {
+                        if !signupToggle {
+                            Button(action:{
+                                
+                                sendPasswordResetEmail()}) {
                                     HStack(spacing: 4) {
                                         Text("Forgot password?")
                                             .font(.footnote)
                                             .foregroundColor(Color.white.opacity(0.7))
                                         GradientText(text: "Reset password")
                                             .font(.footnote
-                                                    .bold())
+                                                .bold())
                                     }
                                 }
-                                Rectangle()
-                                    .frame(height: 1)
-                                    .foregroundColor(.white.opacity(0.1))
-                                // TODO add sign in with apple option
-//                                Button(action: {
-//                                    signInWithAppleObject.signInWithApple()
-//                                    print("sign in with apple")}) {
-//                                   SignInWithAppleButton()
-//                                        .frame(height: 50)
-//                                        .cornerRadius(16)
-//                                }
-                            }
+                            Rectangle()
+                                .frame(height: 1)
+                                .foregroundColor(.white.opacity(0.1))
+                            // TODO add sign in with apple option
+                            //                                Button(action: {
+                            //                                    signInWithAppleObject.signInWithApple()
+                            //                                    print("sign in with apple")}) {
+                            //                                   SignInWithAppleButton()
+                            //                                        .frame(height: 50)
+                            //                                        .cornerRadius(16)
+                            //                                }
+                        }
                         
                     }
                 }
@@ -226,18 +235,33 @@ struct SignUpView: View {
             }
             .rotation3DEffect(Angle(degrees: self.rotationAngle), axis: (x: 0, y: 1, z: 0))
             .background(RoundedRectangle(cornerRadius: 30)
-                            .stroke(Color.white.opacity(0.2))
-                            .background(Color("secondaryBackground").opacity(0.5))
-                            .background(VisualEffectBlur(blurStyle: .systemThinMaterialDark))
-                            .shadow(color: Color("shadowColor").opacity(0.5), radius: 60, x: 0, y: 30)
+                .stroke(Color.white.opacity(0.2))
+                .background(Color("secondaryBackground").opacity(0.5))
+                .background(VisualEffectBlur(blurStyle: .systemThinMaterialDark))
+                .shadow(color: Color("shadowColor").opacity(0.5), radius: 60, x: 0, y: 30)
                         
             )
             .cornerRadius(30)
             .padding(.horizontal)
             .rotation3DEffect(Angle(degrees: self.rotationAngle), axis: (x: 0, y: 1, z: 0))
+           
+                Spacer()
+        }
             .alert(isPresented: $showAlertView) {
-                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .cancel())
+//                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: Alert.Button(action: {
+//                    withAnimation {
+//                        self.show.toggle()
+//                    }
+//                }, label: {
+//                    Text("OK")
+//                }))
+                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .cancel(Text("OK"), action: {
+                    withAnimation {
+                                           self.show.toggle()
+                        }
+                }))
             }
+            .opacity(show ? 1 : 0)
         }
         // #todo add profile view to the game
 //                .fullScreenCover(isPresented: $showProfileView) {
@@ -247,7 +271,9 @@ struct SignUpView: View {
     }
     
     func signUp() {
-       if signupToggle {Auth.auth().createUser(withEmail: email, password: password) { result, error in
+  
+        
+        if signupToggle {Auth.auth().createUser(withEmail: email, password: password) { result, error in
             guard error == nil else {
                 self.alertTitle = "uh-oh"
                 
@@ -255,6 +281,18 @@ struct SignUpView: View {
                 self.showAlertView.toggle()
                 return
             }
+           
+           // save user
+            guard let result = result else {
+                self.alertTitle = "Cannot save user info"
+                self.alertMessage = "Please try again "
+                self.showAlertView.toggle()
+                return
+                
+            }
+            
+            saveUserData(authResult: result)
+            
             print("User signed up")
        }}else{
            Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -262,9 +300,43 @@ struct SignUpView: View {
                    print(error!.localizedDescription)
                    return
                }
+               guard let result = result else {
+                   self.alertTitle = "Cannot save user info"
+                   self.alertMessage = "Please try again "
+                   self.showAlertView.toggle()
+                   return
+                   
+               }
+               
+               saveUserData(authResult: result)
                print("User signed in")
            }
        }
+        
+        // save user data
+        
+        
+        
+     
+        
+        
+        
+    }
+    
+    func saveUserData(authResult: AuthDataResult) {
+        let ud = UserDefaults.standard
+        let user = authResult.user
+        ud.set(user.email, forKey: "username")
+        ud.set(user.displayName, forKey: "userDisplayName")
+        ud.set(user.uid, forKey: "userID")
+        
+        
+        // save to firebase database
+        serverManager.saveUser(user: user)
+        
+        self.alertTitle = "You are logged in!"
+        self.alertMessage = "Welcome to RPS Multiplayer!"
+        self.showAlertView.toggle()
     }
     
     func sendPasswordResetEmail() {
@@ -288,7 +360,7 @@ struct SignUpView: View {
 
 struct SignUpView_Preview: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(show: .constant(true), serverManager: ServerManager())
     }
 }
 
