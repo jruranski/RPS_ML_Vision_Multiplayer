@@ -11,7 +11,7 @@ struct HomeView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var serverManager: ServerManager = ServerManager()
     
-    @State var onlinePlayers: [OpponentModel] = [OpponentModel(name: "Jacek", id: UUID(), move: .none), OpponentModel(name: "Wacek", id: UUID(), move: .none)]
+    @State var onlinePlayers: [Opponent] = [Opponent(name: "Jacek", id: UUID().uuidString, move: .none), Opponent(name: "Wacek", id: UUID().uuidString, move: .none)]
     @State var showContentView: Bool = false
    @State var showProfileView: Bool = false
    @State var showSettingsView: Bool = false
@@ -60,8 +60,16 @@ struct HomeView: View {
             .padding()
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
-                    ForEach(onlinePlayers, id: \.id) { player in
+                    ForEach(serverManager.onlinePlayers, id: \.id) { player in
                         OnlinePlayerRow(player: player)
+                    }
+                    if serverManager.onlinePlayers.isEmpty {
+                        HStack {
+                            Spacer()
+                            Text("No online players!")
+                                .font(.system(.body, design: .rounded, weight: .medium))
+                            Spacer()
+                        }
                     }
                 }.padding()
             }

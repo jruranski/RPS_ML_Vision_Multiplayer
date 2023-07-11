@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct OnlinePlayerRow: View {
-    var player: OpponentModel = OpponentModel()
+    var player: Opponent = Opponent()
     @State  var selected = false
     var body: some View {
         HStack {
+         
             VStack(alignment: .leading) {
-                Text(player.name)
-                    .font(.system(.body, design: .rounded, weight: .semibold))
-                Text(player.id?.uuidString ?? "")
+                HStack {
+                    Text(player.name)
+                        .font(.system(.body, design: .rounded, weight: .semibold))
+                    if player.isOnline {
+                        Circle()
+                            .frame(width: 8, height: 8, alignment: .center)
+                            .foregroundColor(.green)
+                            .padding( -6)
+                    }
+                }
+                Text(player.id ?? "")
                     .font(.system(.caption2, design: .rounded, weight: .ultraLight))
             }
          Spacer()

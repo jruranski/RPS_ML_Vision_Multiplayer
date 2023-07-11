@@ -11,7 +11,7 @@ import Foundation
 class GameViewModel: ObservableObject {
     @Published var game: GameModel
     
-    @Published var opponent: OpponentModel
+    @Published var opponent: Opponent
     
     @Published var isGameOver = false
     @Published var endRoundTitle = "Draw"
@@ -22,7 +22,7 @@ class GameViewModel: ObservableObject {
     
     init() {
         game = GameModel()
-        opponent = OpponentModel()
+        opponent = Opponent()
     }
     
     func resolveRound(playerMove: Move) {

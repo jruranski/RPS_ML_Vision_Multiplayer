@@ -130,5 +130,85 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12056382-F537-4BBF-BD10-BBDDFFC9864B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/ServerManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "validatePlayerExistsInBackround()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6D93FEB-0A82-4699-A9E9-1806E7FF46D1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/ServerManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "fetchAllOnlinePlayers(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E6D93FEB-0A82-4699-A9E9-1806E7FF46D1 - 879456a0341522ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 () -&gt; () in RPS_ML_Multiplayer.ServerManager.fetchAllOnlinePlayers(completion: (Swift.Array&lt;RPS_ML_Multiplayer.Opponent&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/ServerManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "800">
+               </Location>
+               <Location
+                  uuid = "E6D93FEB-0A82-4699-A9E9-1806E7FF46D1 - 879456a0341522ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 () -&gt; () in RPS_ML_Multiplayer.ServerManager.fetchAllOnlinePlayers(completion: (Swift.Array&lt;RPS_ML_Multiplayer.Opponent&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/ServerManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "908">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B93BF9DF-491C-41CF-A674-4B133A60C510"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/ServerManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "fetchAllOnlinePlayers(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

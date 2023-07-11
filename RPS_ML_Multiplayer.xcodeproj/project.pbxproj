@@ -36,14 +36,10 @@
 		35D314FC2A5AB81300D12796 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 35D314FB2A5AB81300D12796 /* FirebaseMessaging */; };
 		35D314FE2A5AB81300D12796 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 35D314FD2A5AB81300D12796 /* FirebaseStorageCombine-Community */; };
 		35D315002A5AB9AB00D12796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35D314FF2A5AB9AB00D12796 /* GoogleService-Info.plist */; };
-		35D315012A5AB9AB00D12796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35D314FF2A5AB9AB00D12796 /* GoogleService-Info.plist */; };
-		35D315022A5AB9AB00D12796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35D314FF2A5AB9AB00D12796 /* GoogleService-Info.plist */; };
 		35D315042A5BF17200D12796 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315032A5BF17200D12796 /* ServerManager.swift */; };
 		35D315052A5BF17200D12796 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315032A5BF17200D12796 /* ServerManager.swift */; };
 		35D315062A5BF17200D12796 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315032A5BF17200D12796 /* ServerManager.swift */; };
 		35D315082A5BF69C00D12796 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315072A5BF69C00D12796 /* GameServer.swift */; };
-		35D315092A5BF69C00D12796 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315072A5BF69C00D12796 /* GameServer.swift */; };
-		35D3150A2A5BF69C00D12796 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315072A5BF69C00D12796 /* GameServer.swift */; };
 		35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */; };
 		35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC0B2A55AC20000C369E /* ContentView.swift */; };
 		35E9AC0E2A55AC22000C369E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E9AC0D2A55AC22000C369E /* Assets.xcassets */; };
@@ -384,7 +380,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35D315012A5AB9AB00D12796 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +387,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35D315022A5AB9AB00D12796 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35D315092A5BF69C00D12796 /* GameServer.swift in Sources */,
 				35D315052A5BF17200D12796 /* ServerManager.swift in Sources */,
 				35E9AC1B2A55AC22000C369E /* RPS_ML_MultiplayerTests.swift in Sources */,
 				35D314C92A56F9AA00D12796 /* GameTests.swift in Sources */,
@@ -447,7 +440,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35D3150A2A5BF69C00D12796 /* GameServer.swift in Sources */,
 				35E9AC272A55AC22000C369E /* RPS_ML_MultiplayerUITestsLaunchTests.swift in Sources */,
 				35D315062A5BF17200D12796 /* ServerManager.swift in Sources */,
 				35E9AC252A55AC22000C369E /* RPS_ML_MultiplayerUITests.swift in Sources */,
