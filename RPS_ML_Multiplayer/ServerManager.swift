@@ -17,6 +17,10 @@ class ServerManager: ObservableObject {
     
     @Published var selectedOpponent: Opponent? = nil
     
+    
+    @Published var invitedGames: [GameModel] = []
+    
+    
     private var user: User?
     
     private var ref: DatabaseReference?
@@ -31,10 +35,7 @@ class ServerManager: ObservableObject {
         tryLogin()
         validatePlayerExistsInBackround()
         
-        fetchAllOnlinePlayers { opponents in
-            
-            self.onlinePlayers = opponents
-        }
+      
         
     }
     
@@ -42,6 +43,21 @@ class ServerManager: ObservableObject {
         ref = Database.database().reference()
         self.user = user
         
+    }
+    
+    
+    
+    func refreshOnlinePlayers() {
+        fetchAllOnlinePlayers { opponents in
+            
+            self.onlinePlayers = opponents
+        }
+    }
+    
+    func refreshOnlineGames() {
+        fetchInvitedGames { games in
+            self.invitedGames = games
+        }
     }
     
     func passDbReference() -> DatabaseReference {
@@ -54,9 +70,28 @@ class ServerManager: ObservableObject {
         
     }
     
+    func getCurrentUser() -> User? {
+        return user
+    }
+    
+    func saveUserDisplayName(name: String) {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        print("changing name to \(name)")
+        changeRequest?.commitChanges { (error) in
+          // ...
+            print(error?.localizedDescription ?? "no errors saving display name")
+        }
+        guard let user = user else {
+            print("no user to save")
+            return
+        }
+        self.saveUser(user: user)
+    }
+    
     
     private func readLinkFromPlist() -> String {
-        var link = ""
+        let link = ""
         print("reading link")
         guard let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {return "no bundle"}
         
@@ -178,8 +213,40 @@ class ServerManager: ObservableObject {
         }
     }
     
-    
-
+    private func fetchInvitedGames(completion: @escaping ([GameModel]) -> Void) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            
+            
+            guard let ref = self?.ref, let currentUser = self?.user else { return }
+            let currentUserId = currentUser.uid
+            
+            ref.child("games").observeSingleEvent(of: .value) { (snapshot) in
+                var invitedGames: [GameModel] = []
+                for child in snapshot.children {
+                    guard let childSnapshot = child as? DataSnapshot,
+                          let gameData = childSnapshot.value as? [String: Any],
+                          let participants = gameData["participants"] as? [String]
+                    else {
+                        continue
+                    }
+                    
+                    // Check if the current user is in the participants list and they have not accepted yet && gameData[currentUserId] == nil
+                    print("found game \(childSnapshot.key)")
+                    if participants.contains(currentUserId) {
+                        let oppID = participants.first(where: { id in
+                            id != currentUserId
+                        }) ?? "no_id"
+                        
+                        let game = GameModel(from: gameData, id: gameData["uid"] as? String ?? "no_id", opponentID: oppID, opponentName: Date(timeIntervalSince1970: gameData["created"] as? TimeInterval ?? 0).formatted())
+                        invitedGames.append(game ?? GameModel())
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(invitedGames)
+                }
+            }
+        }
+    }
     
     func tryLogin() {
         Auth.auth().addStateDidChangeListener { auth, user in
@@ -224,6 +291,10 @@ class ServerManager: ObservableObject {
         ud.set("", forKey: "username")
         ud.set("", forKey: "userDisplayName")
         ud.set("", forKey: "userID")
+        
+        user = nil
+        signedIn = false
+        
     }
     
     

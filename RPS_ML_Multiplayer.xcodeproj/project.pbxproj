@@ -37,9 +37,9 @@
 		35D314FE2A5AB81300D12796 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 35D314FD2A5AB81300D12796 /* FirebaseStorageCombine-Community */; };
 		35D315002A5AB9AB00D12796 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35D314FF2A5AB9AB00D12796 /* GoogleService-Info.plist */; };
 		35D315042A5BF17200D12796 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315032A5BF17200D12796 /* ServerManager.swift */; };
-		35D315052A5BF17200D12796 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315032A5BF17200D12796 /* ServerManager.swift */; };
-		35D315062A5BF17200D12796 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315032A5BF17200D12796 /* ServerManager.swift */; };
 		35D315082A5BF69C00D12796 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D315072A5BF69C00D12796 /* GameServer.swift */; };
+		35D3150C2A5D4F6F00D12796 /* GameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D3150B2A5D4F6F00D12796 /* GameRow.swift */; };
+		35D3150E2A5D695C00D12796 /* GradientProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D3150D2A5D695C00D12796 /* GradientProfilePicture.swift */; };
 		35E9AC0A2A55AC20000C369E /* RPS_ML_MultiplayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */; };
 		35E9AC0C2A55AC20000C369E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9AC0B2A55AC20000C369E /* ContentView.swift */; };
 		35E9AC0E2A55AC22000C369E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E9AC0D2A55AC22000C369E /* Assets.xcassets */; };
@@ -93,6 +93,8 @@
 		35D314FF2A5AB9AB00D12796 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		35D315032A5BF17200D12796 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		35D315072A5BF69C00D12796 /* GameServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServer.swift; sourceTree = "<group>"; };
+		35D3150B2A5D4F6F00D12796 /* GameRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRow.swift; sourceTree = "<group>"; };
+		35D3150D2A5D695C00D12796 /* GradientProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProfilePicture.swift; sourceTree = "<group>"; };
 		35E9AC062A55AC20000C369E /* RPS_ML_Multiplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPS_ML_Multiplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPS_ML_MultiplayerApp.swift; sourceTree = "<group>"; };
 		35E9AC0B2A55AC20000C369E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				35D314CC2A57141B00D12796 /* RPS_ML_trained.mlmodel */,
 				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
 				35D314D52A57F6E200D12796 /* HomeView.swift */,
+				35D3150B2A5D4F6F00D12796 /* GameRow.swift */,
 				35D315032A5BF17200D12796 /* ServerManager.swift */,
 				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
 				35D314C72A56F1B900D12796 /* Game */,
@@ -220,6 +223,7 @@
 				35D314E62A59975400D12796 /* VisualEffectBlur.swift */,
 				35D314E32A5996DD00D12796 /* GradientViews */,
 				35D314E82A599DC300D12796 /* ProfileView.swift */,
+				35D3150D2A5D695C00D12796 /* GradientProfilePicture.swift */,
 			);
 			path = RPS_ML_Multiplayer;
 			sourceTree = "<group>";
@@ -421,6 +425,8 @@
 				35D314E72A59975400D12796 /* VisualEffectBlur.swift in Sources */,
 				35D314DE2A59965F00D12796 /* SignUpView.swift in Sources */,
 				35D314D12A57163700D12796 /* RoundDetail.swift in Sources */,
+				35D3150C2A5D4F6F00D12796 /* GameRow.swift in Sources */,
+				35D3150E2A5D695C00D12796 /* GradientProfilePicture.swift in Sources */,
 				35D314E02A5996A200D12796 /* GradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +435,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35D315052A5BF17200D12796 /* ServerManager.swift in Sources */,
 				35E9AC1B2A55AC22000C369E /* RPS_ML_MultiplayerTests.swift in Sources */,
 				35D314C92A56F9AA00D12796 /* GameTests.swift in Sources */,
 				35D314CB2A56FDE100D12796 /* GamePerformanceTests.swift in Sources */,
@@ -441,7 +446,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E9AC272A55AC22000C369E /* RPS_ML_MultiplayerUITestsLaunchTests.swift in Sources */,
-				35D315062A5BF17200D12796 /* ServerManager.swift in Sources */,
 				35E9AC252A55AC22000C369E /* RPS_ML_MultiplayerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

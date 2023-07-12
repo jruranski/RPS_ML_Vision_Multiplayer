@@ -14,6 +14,8 @@ struct GameOverlay: View {
     @Binding var result: String
     @Binding var shouldStopCamera: Bool
 
+    
+
     var body: some View {
         VStack {
             HStack {
@@ -25,16 +27,17 @@ struct GameOverlay: View {
                         .modifier(BlurButtonModifier())
                 }.buttonStyle(PlainButtonStyle())
                 Spacer()
-                Text("Waiting for opponent")
+                Text(viewModel.gameStateDescription)
                     .font(.system(.body, design: .rounded, weight: .bold))
                     
                     .padding(.horizontal)
                     .modifier(BlurButtonModifier(radius: 18))
                 Spacer()
-                Text("1/3")
+                Text(viewModel.timerText)
                     .font(.system(.body, design: .rounded, weight: .bold))
-
+                    .monospacedDigit()
                     .modifier(BlurButtonModifier())
+                    
             }
             .foregroundColor(.secondary)
             

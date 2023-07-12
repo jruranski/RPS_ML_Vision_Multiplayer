@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var frameHandler = FrameHandler()
-    @StateObject private var viewModel = GameViewModel()
+    @StateObject var viewModel = GameViewModel()
     @State private var cameraHidden = false
     
     @Binding var show: Bool

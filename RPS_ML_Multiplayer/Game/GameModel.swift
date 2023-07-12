@@ -16,12 +16,99 @@ class GameModel {
     var enemyMove: Move = .none
     var winner: Winner = .none
     
-    var roundHistory: [RoundResult] = []
+    // player ids from database
+    var player1: String = ""
+    var player2: String = ""
+    
+    var gameID: String = ""
+    
+    var finished: Bool = false
+    
+    var opponent: Opponent = Opponent()
+    
+    var moves: [PlayerMove] = []
     
     let maxScore = 3
     
+
+    var turnOf: Winner = .player
+    
+    
     init() {
         print("initializing gamemodel")
+    }
+    
+    convenience init?(from dict: [String: Any], id: String, opponentID: String, opponentName: String) {
+        guard case let gameData = dict["participants"] as? [String], let player1 = gameData?[0] as? String,
+              let player2 = gameData?[1] as? String
+               
+           
+        else {
+            print("not enought participants! Failed to load GameModel")
+            return nil
+        }
+//        let opponentName = dict["opponentName"] as? String
+        let opponent = Opponent(name: opponentName, uid: opponentID, isOnline: true)
+      //  let rounds = dict["rounds"] as? Int ?? 0
+        let playerScore = dict["playerScore"] as? Int ?? 0
+        let enemyScore = dict["enemyScore"] as? Int ?? 0
+        let finished = dict["finished"] as? Bool ?? false
+       // let roundHistory = dict["move"] as? [PlayerMove] ?? []  // You'll need to map this properly
+        var roundHistory: [PlayerMove] = []
+        if let movesDict = dict["moves"] as? [String: [String: Any]] {
+            for (moveID, moveData) in movesDict {
+                if let playerID = moveData["player"] as? String,
+                   let moveString = moveData["move"] as? String,
+                   let move = Move(rawValue: moveString) {
+                    let playerMove = PlayerMove(moveID: Int(moveID) ?? 123, move: move, playerID: playerID)
+                    roundHistory.append(playerMove)
+                }
+            }
+        }
+        let turnOf = dict["turnOf"] as? String
+        let currentTurn: Winner = turnOf == opponentID ? .enemy : .player
+        self.init(
+            rounds: 0,
+            playerScore: playerScore,
+            enemyScore: enemyScore,
+            player1: player1,
+            player2: player2,
+            gameID: id,
+            finished: finished,
+            opponent: opponent,
+            roundHistory: roundHistory,
+            turnOf: currentTurn
+        )
+    }
+    
+    init(
+        rounds: Int = 0,
+        playerScore: Int = 0,
+        enemyScore: Int = 0,
+        playerMove: Move = .none,
+        enemyMove: Move = .none,
+        winner: Winner = .none,
+        player1: String,
+        player2: String,
+        gameID: String,
+        finished: Bool = false,
+        opponent: Opponent,
+        roundHistory: [PlayerMove] = [],
+        turnOf: Winner
+    ) {
+        self.rounds = rounds
+        self.playerScore = playerScore
+        self.enemyScore = enemyScore
+        self.playerMove = playerMove
+        self.enemyMove = enemyMove
+        self.winner = winner
+        self.player1 = player1
+        self.player2 = player2
+        self.gameID = gameID
+        self.finished = finished
+        self.opponent = opponent
+        self.moves = roundHistory
+        self.turnOf = turnOf
     }
     
     func getGameWinner() -> Winner {
@@ -33,15 +120,20 @@ class GameModel {
         return .none
     }
     
+   
+
+    
+    
     
 }
 
 
-struct RoundResult {
+struct PlayerMove {
+    var moveID: Int = 0
     var roundNumber = 0
-    var winner: Winner
-    var winningMove: Move
-    
+   // var player: Winner
+    var move: Move
+    var playerID: String
     
 }
 

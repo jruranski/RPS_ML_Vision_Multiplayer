@@ -17,7 +17,9 @@ struct HomeView: View {
    @State var showSettingsView: Bool = false
     @State private var signedIn: Bool = false
 
-
+    
+    @State var selectedPlayer: Opponent? = nil
+    @State var selectedGame: GameModel? = nil
     var body: some View {
         VStack {
             HStack {
@@ -37,7 +39,7 @@ struct HomeView: View {
                 }
                 .fullScreenCover(isPresented: $showProfileView) {
                     if serverManager.isSignedIn() {
-                    ProfileView(show: $showProfileView)
+                    ProfileView(show: $showProfileView, serverManager: serverManager)
                     }else { 
                         SignUpView(show: $showProfileView, serverManager: serverManager)
                     }
@@ -61,7 +63,16 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
                     ForEach(serverManager.onlinePlayers, id: \.id) { player in
-                        OnlinePlayerRow(player: player)
+                        OnlinePlayerRow(player: player) {
+                            // start new game with that player
+                            
+                            selectedPlayer = player
+                            
+                            // present game screen
+                            withAnimation(.easeInOut) {
+                                self.showContentView = true
+                            }
+                        }
                     }
                     if serverManager.onlinePlayers.isEmpty {
                         HStack {
@@ -73,7 +84,10 @@ struct HomeView: View {
                     }
                 }.padding()
             }
-            .frame(height: 60 * 5)
+            .refreshable {
+                serverManager.refreshOnlinePlayers()
+            }
+            .frame(height: 50 * 5)
             
             .background(Color(.systemBackground))
             .mask(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -81,52 +95,79 @@ struct HomeView: View {
             .shadow(color: Color.black.opacity(0.12), radius: 12, x: 0, y: 4)
             .padding()
             
-            
-            
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
+                    ForEach(serverManager.invitedGames, id: \.gameID) { game in
+                        GameRow(game: game) {
+                            // join an existing game
+                            selectedGame = game
+                            self.showContentView = true
+                        }
+                    }
+                    if serverManager.invitedGames.isEmpty {
+                        HStack {
+                            Spacer()
+                            Text("No game invites...")
+                                .font(.system(.body, design: .rounded, weight: .medium))
+                            Spacer()
+                        }
+                    }
+                }.padding()
+            }
+            .frame(height: 50 * 5)
+            .refreshable {
+                self.serverManager.refreshOnlineGames()
+            }
+            .background(Color(.systemBackground))
+            .mask(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(Color(.systemGray6), lineWidth: 2))
+            .shadow(color: Color.black.opacity(0.12), radius: 12, x: 0, y: 4)
+            .padding()
+           
             Spacer()
             
-            Button(action: {
-             // invite players and start game
-             
-            }) {
-                HStack {
-                    Spacer()
-                    Text("START PARTY")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-                    .foregroundColor(.white)
-                    .padding()
-                    Spacer()
-            }
-                .background(Color.blue)
-                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color.blue.lighter() ?? .blue, lineWidth: 2).opacity(0.8).blendMode(.overlay))
-                .padding()
-                
-            }
-            
-            Button(action: {
-             // invite players and start game
-             
-            }) {
-                HStack {
-                    Spacer()
-                    Text("JOIN")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-                    .foregroundColor(.white)
-                    .padding()
-                    Spacer()
-            }
-                .background(Color.blue)
-                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color.blue.lighter() ?? .blue, lineWidth: 2).opacity(0.8).blendMode(.overlay))
-                .padding()
-                
-            }
-            
+//            Button(action: {
+//             // invite players and start game
+//
+//            }) {
+//                HStack {
+//                    Spacer()
+//                    Text("START PARTY")
+//                    .font(.subheadline)
+//                    .fontWeight(.bold)
+//                    .fontDesign(.rounded)
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    Spacer()
+//            }
+//                .background(Color.blue)
+//                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
+//                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color.blue.lighter() ?? .blue, lineWidth: 2).opacity(0.8).blendMode(.overlay))
+//                .padding()
+//
+//            }
+//
+//            Button(action: {
+//             // invite players and start game
+//
+//            }) {
+//                HStack {
+//                    Spacer()
+//                    Text("JOIN")
+//                    .font(.subheadline)
+//                    .fontWeight(.bold)
+//                    .fontDesign(.rounded)
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    Spacer()
+//            }
+//                .background(Color.blue)
+//                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
+//                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color.blue.lighter() ?? .blue, lineWidth: 2).opacity(0.8).blendMode(.overlay))
+//                .padding()
+//
+//            }
+//
             
             Button(action: {
              // invite players and start game
@@ -158,8 +199,19 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $showContentView, onDismiss: {
             
         }) {
-            ContentView(show: $showContentView)
+            
+            if let opponent = selectedPlayer {
+                
+                ContentView(viewModel: GameViewModel(serverManager: serverManager, opponent: opponent), show: $showContentView)
+            }else if let game = selectedGame {
+                ContentView(viewModel: GameViewModel(serverManager: serverManager, game: game), show: $showContentView)
+            }
         }
+        .onAppear {
+            serverManager.refreshOnlinePlayers()
+            serverManager.refreshOnlineGames()
+        }
+
         .onChange(of: scenePhase) { newValue in
             switch newValue {
             case .active:

@@ -20,23 +20,106 @@ class GameViewModel: ObservableObject {
     @Published var enemyMoveString = "Paper"
     @Published var gameFinished = false
     
+    @Published var gameStateDescription = "Waiting for other player"
+    
+    @Published var timerText = "0"
+    
+    var gameServer: GameServer? = nil
+    
     init() {
+//        gameServer = GameServer(ref: , user: <#T##User#>)
         game = GameModel()
         opponent = Opponent()
     }
     
+    init(serverManager: ServerManager, opponent: Opponent) {
+       let gameServer = GameServer(ref: serverManager.passDbReference(), user: serverManager.getCurrentUser(), opponent: opponent )
+         let game = gameServer.createNewGame(opponent: opponent)
+        self.game = game ?? GameModel()
+        self.gameServer = gameServer
+        self.opponent = opponent
+        
+       
+        
+    }
+    
+    
+    init(serverManager: ServerManager, game: GameModel) {
+        self.opponent = game.opponent
+        let gameServer = GameServer(ref: serverManager.passDbReference(), user: serverManager.getCurrentUser(), game: game )
+    
+        self.game = game
+        self.gameServer = gameServer
+      
+        
+       
+        
+    }
+    
     func resolveRound(playerMove: Move) {
-       isGameOver = true
-        game.playerMove = playerMove
         
-      //  if game.enemyMove == .none {   game.enemyMove = generateEnemyMove() } // prototyping
         
-        // wait or fetch the enemy move
-        
-        //then
-        enemyMoveString = game.enemyMove.rawValue
-        
-        calculateRound()
+        if game.turnOf == .player {
+           
+            game.playerMove = playerMove
+            
+            //  if game.enemyMove == .none {   game.enemyMove = generateEnemyMove() } // prototyping
+            
+            // wait or fetch the enemy move
+            
+            //then
+           
+            game.turnOf = .enemy
+          //  calculateRound()
+            gameServer?.updateGame(game: game, move: playerMove)
+            let startTime = Date().timeIntervalSince1970
+            
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                guard let self = self else {return}
+                    var enemyMoved = false
+                    while !enemyMoved {
+                        gameServer?.fetchMoves(gameID: self.game.gameID) { moves in
+                            if let latestMove = moves.last, latestMove.playerID == self.game.opponent.id {
+                                enemyMoved = true
+                                
+                                // enemy has made a move
+                                self.game.enemyMove = latestMove.move
+                             
+                              
+                                
+                                let endTime = Date().timeIntervalSince1970  // end timer
+                                print("Time elapsed: \(endTime - startTime) seconds.")
+                                
+                                self.calculateRound()
+                                DispatchQueue.main.async {
+                                    self.enemyMoveString = self.game.enemyMove.rawValue
+                                    self.isGameOver = true
+                                    self.timerText = "\(endTime - startTime)"
+                                }
+                                self.gameServer?.updateGame(game: self.game, move: .none)
+                            }else {
+                                DispatchQueue.main.async {
+                                    let endTime = Date().timeIntervalSince1970
+                                    self.timerText = "\(endTime - startTime)"
+                                }
+                            }
+                        }
+                        
+                        // Avoid overwhelming the server with requests
+                        sleep(2)
+                    }
+                }
+            
+            
+        }else if game.turnOf == .enemy {
+            // wait
+            
+            gameStateDescription = "Wait until the enemy has made a move!"
+            
+        //    gameServer?.updateGame(game: game, move: .none)
+            
+            
+        }
     }
     
     func fetchEnemyMove() {
