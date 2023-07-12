@@ -176,7 +176,7 @@ struct GameOverlay: View {
                 // #todo display the game over screen first!
                 
                 withAnimation(.easeInOut) {
-                    self.show = newValue
+                    self.show = false
                 }
             }
     }

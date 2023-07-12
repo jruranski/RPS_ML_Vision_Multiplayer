@@ -16,6 +16,7 @@ class GameServer {
     var opponent: Opponent?
     
     
+    var isPlayerCreator: Bool = true
     
     private var gameId: String?
     
@@ -28,6 +29,7 @@ class GameServer {
         self.ref = ref
         self.user = user
         self.opponent = opponent
+        self.isPlayerCreator = true
     }
     
     init(ref: DatabaseReference, user: User?, game: GameModel) {
@@ -35,6 +37,7 @@ class GameServer {
         self.user = user
         self.opponent = game.opponent
         self.gameId = game.gameID
+        self.isPlayerCreator = false
     }
     
     
@@ -56,8 +59,8 @@ class GameServer {
             "creator": player1,
             "invited": player2,
             "winner": "",
-            "playerScore" : 0,
-            "enemyScore" : 0,
+            player1 : 0,
+            player2 : 0,
             "turnOf" : player1
         ]
 
@@ -76,6 +79,23 @@ class GameServer {
             
     }
     
+    
+    func listenForTurnOfChange(gameID: String, completion: @escaping (Winner?) -> Void) {
+        guard let ref = self.ref else { return }
+        guard let user = self.user else {return}
+        
+        ref.child("games").child(gameID).child("turnOf").observe(.value) { snapshot in
+            guard let turnOfValue = snapshot.value as? String,
+                  let turnOf: Winner = turnOfValue == user.uid ? .player : .enemy
+            else {
+                print("Error observing turnOf changes")
+                completion(nil)
+                return
+            }
+            completion(turnOf)
+        }
+    }
+    
     // fetch the current state of game from the database and convert turnOf to Winner
     func fetchCurrentGameState(gameToUpdate: GameModel) {
         guard let ref = ref else {return}
@@ -84,23 +104,32 @@ class GameServer {
         let gameRef = ref.child("games").child(gameToUpdate.gameID)
         gameRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let playerScore = value?["playerScore"] as? Int ?? 0
-            let enemyScore = value?["enemyScore"] as? Int ?? 0
+            
             let turnOf = value?["turnOf"] as? String ?? ""
             let finished = value?["finished"] as? Bool ?? false
             let winner = value?["winner"] as? String ?? ""
             let creator = value?["creator"] as? String ?? ""
             let invited = value?["invited"] as? String ?? ""
             let moves = value?["moves"] as? [String: [String: Any]] ?? [:]
+            
+            let otherID = creator == user.uid ? invited : creator
+            
+            let playerScore = value?[user.uid] as? Int ?? 0
+            
+            self.isPlayerCreator = creator == user.uid
+            
+            let enemyScore = value?[otherID] as? Int ?? 0
             var movesArray: [PlayerMove] = []
             for (moveID, moveData) in moves {
                 if let playerID = moveData["player"] as? String,
                    let moveString = moveData["move"] as? String,
                    let move = Move(rawValue: moveString) {
-                    let playerMove = PlayerMove(moveID: Int(moveID) ?? 123, move: move, playerID: playerID)
+                    let playerMove = PlayerMove(moveID: Int(moveID) ?? 0, move: move, playerID: playerID)
                     movesArray.append(playerMove)
                 }
             }
+            
+            movesArray.sort(by: { $0.moveID < $1.moveID })
             
             gameToUpdate.playerScore = playerScore
             gameToUpdate.enemyScore = enemyScore
@@ -121,14 +150,38 @@ class GameServer {
         guard let ref = ref else {return}
         guard let user = user else {return}
         
+       // let id = game.opponent.id == user.uid ? user.id :
+        
         let gameRef = ref.child("games").child(game.gameID)
         let gameData: [String: Any] = [
-            "playerScore" : game.playerScore,
-            "enemyScore" : game.enemyScore,
+            user.uid : game.playerScore,
+            game.opponent.id ?? game.player2 : game.enemyScore,
             "turnOf" : game.turnOf == .player ? user.uid : opponent?.id ?? "id_fault",
             "finished" : game.finished
         ]
         addMove(game: game, playerID: user.uid, move: move)
+        
+        print("updating the ")
+        
+        gameRef.updateChildValues(gameData)
+    }
+    
+    func saveFinishedGame(game: GameModel) {
+        guard let ref = ref else {return}
+        guard let user = user else {return}
+        
+       // let id = game.opponent.id == user.uid ? user.id :
+        
+        let gameRef = ref.child("games").child(game.gameID)
+        let gameData: [String: Any] = [
+            user.uid : game.playerScore,
+            game.opponent.id ?? game.player2 : game.enemyScore,
+            "turnOf" : game.turnOf == .player ? user.uid : opponent?.id ?? "id_fault",
+            "finished" : true,
+            
+            
+        ]
+        //addMove(game: game, playerID: user.uid, move: move)
         
         print("updating the ")
         

@@ -50,8 +50,10 @@ class GameModel {
 //        let opponentName = dict["opponentName"] as? String
         let opponent = Opponent(name: opponentName, uid: opponentID, isOnline: true)
       //  let rounds = dict["rounds"] as? Int ?? 0
-        let playerScore = dict["playerScore"] as? Int ?? 0
-        let enemyScore = dict["enemyScore"] as? Int ?? 0
+        let userID = player1 != opponentID ? player1 : player2
+        let otherID = player1 == opponentID ? player1 : player2
+        let playerScore = dict[userID] as? Int ?? 0
+        let enemyScore = dict[otherID] as? Int ?? 0
         let finished = dict["finished"] as? Bool ?? false
        // let roundHistory = dict["move"] as? [PlayerMove] ?? []  // You'll need to map this properly
         var roundHistory: [PlayerMove] = []
@@ -120,6 +122,34 @@ class GameModel {
         return .none
     }
     
+    
+    func calculateScores() {
+        // Reset scores to zero before calculation
+        playerScore = 0
+        enemyScore = 0
+        
+        // Ensure that the moves array contains an even number of moves
+        guard moves.count % 2 == 0 else {
+            print("The game can't be scored until both players have completed all rounds.")
+            return
+        }
+        
+        // Iterate over moves array by 2s (player1 move, player2 move)
+        for i in stride(from: 0, to: moves.count, by: 2) {
+            let playerMove = moves[i].move
+            let enemyMove = moves[i+1].move
+
+            switch (playerMove, enemyMove) {
+            case (.rock, .scissors), (.scissors, .paper), (.paper, .rock):
+                playerScore += 1
+            case (.rock, .paper), (.scissors, .rock), (.paper, .scissors):
+                enemyScore += 1
+            default:
+                // In case of a draw, no points are awarded
+                continue
+            }
+        }
+    }
    
 
     
