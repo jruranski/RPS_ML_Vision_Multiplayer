@@ -255,6 +255,21 @@
                   endingLineNumber = "38"
                   offsetFromSymbolStart = "1116">
                </Location>
+               <Location
+                  uuid = "F397BEB3-4B88-4AE7-BCD2-5CA8275BFC8D - ebceddf44a8dc5f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.init(serverManager: RPS_ML_Multiplayer.ServerManager, opponent: RPS_ML_Multiplayer.Opponent) -&gt; RPS_ML_Multiplayer.GameViewModel"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "1200">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -953,7 +968,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EA5EA9EE-1960-4AAA-B2A7-AFE28F012866"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
@@ -963,6 +978,38 @@
             endingLineNumber = "51"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "EA5EA9EE-1960-4AAA-B2A7-AFE28F012866 - 42a8aa8f79b4009d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.init(serverManager: RPS_ML_Multiplayer.ServerManager, game: RPS_ML_Multiplayer.GameModel) -&gt; RPS_ML_Multiplayer.GameViewModel"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1324">
+               </Location>
+               <Location
+                  uuid = "EA5EA9EE-1960-4AAA-B2A7-AFE28F012866 - 42a8aa8f79b4009d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.init(serverManager: RPS_ML_Multiplayer.ServerManager, game: RPS_ML_Multiplayer.GameModel) -&gt; RPS_ML_Multiplayer.GameViewModel"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1408">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -977,8 +1024,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
-            landmarkName = "resolveRound(playerMove:)"
-            landmarkType = "9">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "EC97739F-849D-4CE2-9203-606A7857C1AA - 2510f4260b7d8cbe"
@@ -1010,6 +1057,21 @@
                   endingLineNumber = "78"
                   offsetFromSymbolStart = "384">
                </Location>
+               <Location
+                  uuid = "EC97739F-849D-4CE2-9203-606A7857C1AA - 2510f4260b7d8f60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.resolveRound(playerMove: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "512">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1025,8 +1087,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "resolveRound(playerMove:)"
-            landmarkType = "9">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "0B046D10-1ED8-444A-AC0F-97E4966361B7 - 2510f4260b7d8fc5"
@@ -1058,6 +1120,21 @@
                   endingLineNumber = "76"
                   offsetFromSymbolStart = "312">
                </Location>
+               <Location
+                  uuid = "0B046D10-1ED8-444A-AC0F-97E4966361B7 - 2510f4260b7d8fa6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.resolveRound(playerMove: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "436">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1065,7 +1142,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "26D5F580-F424-4C6F-A8C8-7C75E34B6785"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
@@ -1121,8 +1198,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "resolveRound(playerMove:)"
-            landmarkType = "9">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "7420C998-DBA7-427D-80C7-477D75895C2E - 5480ef1323c1e04b"
@@ -1184,6 +1261,21 @@
                   endingLineNumber = "101"
                   offsetFromSymbolStart = "52">
                </Location>
+               <Location
+                  uuid = "7420C998-DBA7-427D-80C7-477D75895C2E - d78c714372391e31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;RPS_ML_Multiplayer.PlayerMove&gt;) -&gt; () in closure #1 () -&gt; () in RPS_ML_Multiplayer.GameViewModel.resolveRound(playerMove: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "456">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1191,7 +1283,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "21F7B5B9-A398-4B98-914F-1231FD70E423"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RPS_ML_Multiplayer/Game/GameServer.swift"
@@ -1254,7 +1346,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "527EAE33-94F4-4B8D-B633-F6D734B5918B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RPS_ML_Multiplayer/Game/GameServer.swift"
@@ -1294,6 +1386,245 @@
                   startingLineNumber = "132"
                   endingLineNumber = "132"
                   offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "527EAE33-94F4-4B8D-B633-F6D734B5918B - 3c469cb9149233ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in RPS_ML_Multiplayer.GameServer.fetchCurrentGameState(gameToUpdate: RPS_ML_Multiplayer.GameModel) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameServer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "6600">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92C3D708-8A69-49D7-BC15-6DE8782AC416"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "calculateScores()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "92C3D708-8A69-49D7-BC15-6DE8782AC416 - c91b53ec9dbe1c15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameModel.calculateScores() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "1332">
+               </Location>
+               <Location
+                  uuid = "92C3D708-8A69-49D7-BC15-6DE8782AC416 - c91b53ec9dbe1c36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameModel.calculateScores() -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "1500">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F36F0462-4A98-4FA3-A93D-0A29BDD33625"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/Game/GameServer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "addMove(game:playerID:move:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F36F0462-4A98-4FA3-A93D-0A29BDD33625 - aa4a180fe236943c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameServer.addMove(move: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameServer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "F36F0462-4A98-4FA3-A93D-0A29BDD33625 - d45d73c378694dcb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameServer.addMove(game: RPS_ML_Multiplayer.GameModel, playerID: Swift.String, move: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameServer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "612">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "81F013DF-3DDF-40B8-8D02-8069ADD064A3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "init(rounds:playerScore:enemyScore:playerMove:enemyMove:winner:player1:player2:gameID:finished:opponent:roundHistory:turnOf:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8C5BA2D-BC2F-42D9-9F12-B28FD9BEF8AF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "resolveRound(playerMove:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "C8C5BA2D-BC2F-42D9-9F12-B28FD9BEF8AF - 2510f4260b7db346"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.resolveRound(playerMove: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "844">
+               </Location>
+               <Location
+                  uuid = "C8C5BA2D-BC2F-42D9-9F12-B28FD9BEF8AF - 2510f4260b7db365"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RPS_ML_Multiplayer.GameViewModel.resolveRound(playerMove: RPS_ML_Multiplayer.Move) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A7A82DE-0C25-4D15-A7C0-EDAE6EA27C81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/Game/GameServer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "fetchCurrentGameState(gameToUpdate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A632D8F-6411-4070-82EA-70DC65933EA6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RPS_ML_Multiplayer/Game/GameServer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "fetchCurrentGameState(gameToUpdate:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5A632D8F-6411-4070-82EA-70DC65933EA6 - 3c469cb914923598"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in RPS_ML_Multiplayer.GameServer.fetchCurrentGameState(gameToUpdate: RPS_ML_Multiplayer.GameModel) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameServer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "3988">
+               </Location>
+               <Location
+                  uuid = "5A632D8F-6411-4070-82EA-70DC65933EA6 - 3c469cb914923598"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in RPS_ML_Multiplayer.GameServer.fetchCurrentGameState(gameToUpdate: RPS_ML_Multiplayer.GameModel) -&gt; ()"
+                  moduleName = "RPS_ML_Multiplayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/Game/GameServer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "4444">
                </Location>
             </Locations>
          </BreakpointContent>

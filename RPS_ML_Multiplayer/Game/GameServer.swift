@@ -144,7 +144,60 @@ class GameServer {
         }
     }
 
+    func fetchCurrentGameState(gameToUpdate: GameModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let ref = ref, let user = user else {
+            completion(.failure(EmptyServer.noRefOrUser)) // Replace with an appropriate error
+            return
+        }
 
+        let gameRef = ref.child("games").child(gameToUpdate.gameID)
+        gameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            
+            
+            
+            let turnOf = value?["turnOf"] as? String ?? ""
+            let finished = value?["finished"] as? Bool ?? false
+            let winner = value?["winner"] as? String ?? ""
+            let creator = value?["creator"] as? String ?? ""
+            let invited = value?["invited"] as? String ?? ""
+            let moves = value?["moves"] as? [String: [String: Any]] ?? [:]
+            
+            let otherID = creator == user.uid ? invited : creator
+            
+            let playerScore = value?[user.uid] as? Int ?? 0
+            
+            self.isPlayerCreator = creator == user.uid
+            
+            let enemyScore = value?[otherID] as? Int ?? 0
+            var movesArray: [PlayerMove] = []
+            for (moveID, moveData) in moves {
+                if let playerID = moveData["player"] as? String,
+                   let moveString = moveData["move"] as? String,
+                   let move = Move(rawValue: moveString) {
+                    let playerMove = PlayerMove(moveID: Int(moveID) ?? 0, move: move, playerID: playerID)
+                    movesArray.append(playerMove)
+                }
+            }
+            
+            movesArray.sort(by: { $0.moveID < $1.moveID })
+            
+            gameToUpdate.playerScore = playerScore
+            gameToUpdate.enemyScore = enemyScore
+            gameToUpdate.turnOf = turnOf == user.uid ? .player : .enemy
+            gameToUpdate.finished = finished
+            gameToUpdate.winner = .none
+            gameToUpdate.player1 = creator
+            gameToUpdate.player2 = invited
+            gameToUpdate.moves = movesArray
+           
+
+            completion(.success(()))
+        }) { (error) in
+            print(error.localizedDescription)
+            completion(.failure(error))
+        }
+    }
     
     func updateGame(game: GameModel, move: Move) {
         guard let ref = ref else {return}
@@ -165,6 +218,41 @@ class GameServer {
         
         gameRef.updateChildValues(gameData)
     }
+    
+    
+    func observeMoves(gameID: String, completion: @escaping ([PlayerMove]) -> Void) {
+        guard let ref = ref else {return}
+        // Create a reference to the game's moves
+        let movesRef = ref.child("games").child(gameID).child("moves")
+        
+        // Set up observer for any changes to the "moves" node
+        movesRef.observe(.value, with: { snapshot in
+            var moves: [PlayerMove] = []
+            
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let moveData = childSnapshot.value as? [String: Any],
+                   let playerID = moveData["player"] as? String,
+                   let moveString = moveData["move"] as? String,
+                   let move = Move(rawValue: moveString) {
+                    let playerMove = PlayerMove(moveID: Int(childSnapshot.key) ?? 123, move: move, playerID: playerID)
+                    moves.append(playerMove)
+                }
+            }
+            
+            // Sort moves by moveID
+            moves.sort(by: { $0.moveID < $1.moveID })
+            
+            // Pass the updated moves array to the completion handler
+            completion(moves)
+        }) { error in
+            print("Error observing moves: \(error.localizedDescription)")
+        }
+    }
+
+    
+    
+    
     
     func saveFinishedGame(game: GameModel) {
         guard let ref = ref else {return}
@@ -210,7 +298,7 @@ class GameServer {
         guard let ref = ref else {return}
       //  guard let user = user else {return}
         guard move != .none else {return}
-        let lastID = game.moves.last?.moveID ?? 124
+        let lastID = game.moves.last?.moveID ?? 0
         let playerMove = PlayerMove(moveID: lastID + 1, move: move, playerID: playerID)
         game.moves.append(playerMove)
         
@@ -282,3 +370,8 @@ class GameServer {
     
 }
 
+
+
+enum EmptyServer: Error {
+    case noRefOrUser
+}

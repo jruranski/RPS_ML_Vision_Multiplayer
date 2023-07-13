@@ -37,6 +37,7 @@ struct HomeView: View {
                         self.showProfileView.toggle()
                     }
                 }
+               
                 .fullScreenCover(isPresented: $showProfileView) {
                     if serverManager.isSignedIn() {
                     ProfileView(show: $showProfileView, serverManager: serverManager)
@@ -44,7 +45,7 @@ struct HomeView: View {
                         SignUpView(show: $showProfileView, serverManager: serverManager)
                     }
                 }
-
+            
             Image(systemName: "gear")
                 .font(.system(.headline, design: .rounded, weight: .semibold))
                 .onTapGesture {
@@ -201,10 +202,11 @@ struct HomeView: View {
         }) {
             
             if let opponent = selectedPlayer {
-                
-                ContentView(viewModel: GameViewModel(serverManager: serverManager, opponent: opponent), show: $showContentView)
+                let gameVM =  GameViewModel(serverManager: serverManager, opponent: opponent)
+                ContentView(viewModel: gameVM, show: $showContentView)
             }else if let game = selectedGame {
-                ContentView(viewModel: GameViewModel(serverManager: serverManager, game: game), show: $showContentView)
+                let gameVM = GameViewModel(serverManager: serverManager, game: game)
+                ContentView(viewModel: gameVM, show: $showContentView)
             }
         }
         .onAppear {

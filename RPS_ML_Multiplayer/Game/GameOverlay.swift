@@ -27,13 +27,20 @@ struct GameOverlay: View {
                         .modifier(BlurButtonModifier())
                 }.buttonStyle(PlainButtonStyle())
                 Spacer()
-                Text(viewModel.gameStateDescription)
-                    .font(.system(.body, design: .rounded, weight: .bold))
-                    
-                    .padding(.horizontal)
-                    .modifier(BlurButtonModifier(radius: 18))
+                VStack {
+                    Text(String(viewModel.game.gameID))
+                        .font(.system(.caption2, design: .rounded, weight: .light))
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                    Text(viewModel.gameStateDescription)
+                        .font(.system(.body, design: .rounded, weight: .bold))
+                        .lineLimit(1)
+                }.minimumScaleFactor(0.05)
+                        .padding(.horizontal)
+                        .modifier(BlurButtonModifier(radius: 18))
+                
                 Spacer()
-                Text(viewModel.timerText)
+                Text("\(viewModel.game.playerScore):\(viewModel.game.enemyScore)")
                     .font(.system(.body, design: .rounded, weight: .bold))
                     .monospacedDigit()
                     .modifier(BlurButtonModifier())
@@ -136,13 +143,13 @@ struct GameOverlay: View {
                     if viewModel.isGameOver
                     {
                         
-                        
+                        result = ""
                         viewModel.nextRound()
                         
-                        result = ""
+                        
                     }else{
                         viewModel.fetchEnemyMove()
-                        viewModel.resolveRound(playerMove: Move(rawValue: result) ?? .none)
+                        viewModel.startResolvingRound(playerMove: Move(rawValue: result) ?? .none)
                     }
                 }) {
                     HStack {

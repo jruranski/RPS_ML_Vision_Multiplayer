@@ -123,34 +123,44 @@ class GameModel {
     }
     
     
+    
     func calculateScores() {
         // Reset scores to zero before calculation
         playerScore = 0
         enemyScore = 0
-        
-        // Ensure that the moves array contains an even number of moves
-        guard moves.count % 2 == 0 else {
-            print("The game can't be scored until both players have completed all rounds.")
-            return
-        }
-        
-        // Iterate over moves array by 2s (player1 move, player2 move)
-        for i in stride(from: 0, to: moves.count, by: 2) {
-            let playerMove = moves[i].move
-            let enemyMove = moves[i+1].move
+        print("current moves: \(moves.debugDescription)")
+        print("number of moves: \(moves.count)")
+        // Buffer to hold a pair of moves
+        var playerMove: Move? = nil
+        var enemyMove: Move? = nil
+        let userID = player1 == opponent.id ? player2 : player1
+        // Iterate over moves array
+        for move in moves {
+            // Check the playerID of the move to determine the move ownership
+            if move.playerID == userID {
+                playerMove = move.move
+            } else if move.playerID == opponent.id {
+                enemyMove = move.move
+            }
 
-            switch (playerMove, enemyMove) {
-            case (.rock, .scissors), (.scissors, .paper), (.paper, .rock):
-                playerScore += 1
-            case (.rock, .paper), (.scissors, .rock), (.paper, .scissors):
-                enemyScore += 1
-            default:
-                // In case of a draw, no points are awarded
-                continue
+            // If we have both player's and enemy's moves, score the round
+            if let playerMoveUnwrapped = playerMove, let enemyMoveUnwrapped = enemyMove {
+                switch (playerMoveUnwrapped, enemyMoveUnwrapped) {
+                case (.rock, .scissors), (.scissors, .paper), (.paper, .rock):
+                    playerScore += 1
+                case (.rock, .paper), (.scissors, .rock), (.paper, .scissors):
+                    enemyScore += 1
+                default:
+                    // In case of a draw, no points are awarded
+                    continue
+                }
+
+                // Reset moves to nil after scoring
+                playerMove = nil
+                enemyMove = nil
             }
         }
     }
-   
 
     
     

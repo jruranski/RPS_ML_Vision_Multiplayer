@@ -28,6 +28,7 @@ struct ProfileView: View {
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
             VStack {
+                Spacer()
                 HStack {
                     TextfieldIcon(iconName: "xmark", currentlyEditing: .constant(false), passedImage: .constant(nil))
                         .onTapGesture {
@@ -39,6 +40,7 @@ struct ProfileView: View {
                     Spacer()
                 }.padding()
                     .padding(.top)
+                    .padding()
                 Spacer()
                 
                 VStack {
