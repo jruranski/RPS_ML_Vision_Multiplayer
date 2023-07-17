@@ -82,6 +82,9 @@ class GameViewModel: ObservableObject {
                guard let score = score else {return}
                self.game.playerScore = score
                self.isGameOver = true
+               self.endRoundTitle = "Round won!"
+               self.endRoundImageName = "trophy.circle"
+               self.uiUpdateEnemyMove()
            })
            
            gameServer.listenForEnemyScoreChange(game: game, completion: { score in
@@ -89,8 +92,9 @@ class GameViewModel: ObservableObject {
                self.game.enemyScore = score
                self.isGameOver = true
                // show the update
-               
-              
+               self.endRoundTitle = "Round lost..."
+               self.endRoundImageName =  "xmark.seal"
+               self.uiUpdateEnemyMove()
            })
        
        
@@ -98,7 +102,12 @@ class GameViewModel: ObservableObject {
     }
     
     
-
+    private func uiUpdateEnemyMove() {
+        gameServer?.fetchMoves(gameID: game.gameID, completion: { moves in
+            self.game.moves = moves
+            self.enemyMoveString = moves.last?.move.rawValue ?? "Rock"
+        })
+    }
     
     func startResolvingRound(playerMove: Move) {
         
@@ -332,6 +341,10 @@ class GameViewModel: ObservableObject {
             endRoundImageName = "repeat.circle"
         }
     }
+    
+    
+    
+    
     private func gameOver(champion: Winner) {
         gameFinished = true
         let playerWon = champion == .player

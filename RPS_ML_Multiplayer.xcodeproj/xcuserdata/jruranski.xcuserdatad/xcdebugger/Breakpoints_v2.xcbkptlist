@@ -1022,10 +1022,10 @@
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "GameViewModel"
-            landmarkType = "3">
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "uiUpdateEnemyMove()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1309,8 +1309,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "resolveRound(playerMove:)"
             landmarkType = "7">
             <Locations>
@@ -1547,8 +1547,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "checkScoreChange()"
             landmarkType = "7">
             <Locations>
