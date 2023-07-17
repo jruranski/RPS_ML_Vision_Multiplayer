@@ -241,6 +241,7 @@ class ServerManager: ObservableObject {
                         invitedGames.append(game ?? GameModel())
                     }
                 }
+                
                 DispatchQueue.main.async {
                     completion(invitedGames)
                 }

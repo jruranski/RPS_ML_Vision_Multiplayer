@@ -44,6 +44,7 @@ class GameServer {
     func createNewGame(opponent: Opponent) -> GameModel? {
         guard let ref = ref else {return nil}
         guard let user = user else {return nil}
+        guard gameId == nil else {return nil}
         let currentDate = Date()
         let currentDateInSeconds: Int = Int(currentDate.timeIntervalSince1970)
         print(currentDateInSeconds)
@@ -95,6 +96,43 @@ class GameServer {
             completion(turnOf)
         }
     }
+    
+    func listenForScoreChange(game: GameModel, completion: @escaping (Int?) -> Void) {
+        guard let ref = self.ref else { return }
+        guard let user = self.user else {return}
+        
+        ref.child("games").child(game.gameID).child(user.uid).observe(.value) { snapshot in
+            guard let newScore = snapshot.value as? Int,
+                  newScore != game.playerScore
+                 
+            else {
+                print("Error observing turnOf changes")
+                completion(nil)
+                return
+            }
+            completion(newScore)
+        }
+    }
+    
+    func listenForEnemyScoreChange(game: GameModel, completion: @escaping (Int?) -> Void) {
+        guard let ref = self.ref else { return }
+      //  guard let user = self.user else {return}
+        guard let opponentID = game.opponent.id else {return}
+        
+        
+        ref.child("games").child(game.gameID).child(opponentID).observe(.value) { snapshot in
+            guard let newScore = snapshot.value as? Int,
+                    newScore != game.enemyScore
+                 
+            else {
+                print("Error observing turnOf changes")
+                completion(nil)
+                return
+            }
+            completion(newScore)
+        }
+    }
+    
     
     // fetch the current state of game from the database and convert turnOf to Winner
     func fetchCurrentGameState(gameToUpdate: GameModel) {
@@ -212,6 +250,7 @@ class GameServer {
             "turnOf" : game.turnOf == .player ? user.uid : opponent?.id ?? "id_fault",
             "finished" : game.finished
         ]
+        print("updating and adding move: \(move.rawValue)")
         addMove(game: game, playerID: user.uid, move: move)
         
         print("updating the ")

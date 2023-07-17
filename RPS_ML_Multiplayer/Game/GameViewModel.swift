@@ -35,6 +35,7 @@ class GameViewModel: ObservableObject {
     init(serverManager: ServerManager, opponent: Opponent) {
        let gameServer = GameServer(ref: serverManager.passDbReference(), user: serverManager.getCurrentUser(), opponent: opponent )
          let game = gameServer.createNewGame(opponent: opponent)
+       print("creating a game")
         self.game = game ?? GameModel()
         self.gameServer = gameServer
         self.opponent = opponent
@@ -70,100 +71,143 @@ class GameViewModel: ObservableObject {
         })
     }
     
-//    func resolveRound(playerMove: Move) {
-//
-//
-//        if game.turnOf == .player {
-//
-//            game.playerMove = playerMove
-//
-//            //  if game.enemyMove == .none {   game.enemyMove = generateEnemyMove() } // prototyping
-//
-//            // wait or fetch the enemy move
-//
-//            //then
-//            let isCreator = gameServer?.isPlayerCreator ?? true
-//
-//
-//
-//          //  calculateRound()
-//
-//
-////            if isCreator {
-//                let startTime = Date().timeIntervalSince1970
-//
-//                DispatchQueue.global(qos: .background).async { [weak self] in
-//                    guard let self = self else {return}
-//                    var enemyMoved = false
-//                    while !enemyMoved {
-//                        gameServer?.fetchMoves(gameID: self.game.gameID) { moves in
-//                            if let latestMove = moves.last(where: { move in
-//                                move.playerID == self.opponent.id
-//                            }) {
-//                                enemyMoved = true
-//
-//                                // enemy has made a move
-//                                self.game.enemyMove = latestMove.move
-//
-//
-//
-//                                let endTime = Date().timeIntervalSince1970  // end timer
-//                                print("Time elapsed: \(endTime - startTime) seconds.")
-//
-//                                self.calculateRound()
-//                                DispatchQueue.main.async {
-//                                    self.enemyMoveString = self.game.enemyMove.rawValue
-//                                    self.isGameOver = true
-//                                    self.timerText = "\(Int(endTime - startTime))"
-//                                }
-//                                self.game.turnOf = .enemy
-//                                self.gameServer?.updateGame(game: self.game, move: playerMove)
-//                            }else {
-//                                DispatchQueue.main.async {
-//                                    let endTime = Date().timeIntervalSince1970
-//                                    self.timerText = "\(Int(endTime - startTime))"
-//                                }
-//                                if moves.isEmpty {
-//                                    self.game.turnOf = .enemy
-//                                    self.gameServer?.updateGame(game: self.game, move: playerMove)
-//                                }
-//                            }
-//                        }
-//
-//                        // Avoid overwhelming the server with requests
-//                        sleep(2)
-//                    }
-//                }
-////            }else {
-////                calculateRound()
-////                enemyMoveString = game.enemyMove.rawValue
-////                self.isGameOver = true
-////                self.gameServer?.updateGame(game: self.game, move: .none)
-////            }
-//
-//
-//        }else if game.turnOf == .enemy {
-//            // wait
-//
-//            gameStateDescription = "Wait until the enemy has made a move!"
-//
-//        //    gameServer?.updateGame(game: game, move: .none)
-//
-//
-//        }
-//    }
+    
+    
+    
+   private func checkScoreChange() {
+       guard let gameServer = gameServer else {return}
+       
+      // if gameServer.isPlayerCreator {
+           gameServer.listenForScoreChange(game: game, completion: { score in
+               guard let score = score else {return}
+               self.game.playerScore = score
+               self.isGameOver = true
+           })
+           
+           gameServer.listenForEnemyScoreChange(game: game, completion: { score in
+               guard let score = score else {return}
+               self.game.enemyScore = score
+               self.isGameOver = true
+               // show the update
+               
+              
+           })
+       
+       
+     //  }
+    }
+    
+    
+
     
     func startResolvingRound(playerMove: Move) {
-        gameServer?.fetchCurrentGameState(gameToUpdate: game, completion: { [weak self] result in
-            switch result {
-            case .success:
-                self?.resolveRound(playerMove: playerMove)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
+        
+        guard let gameServer = gameServer else {return}
+        if game.turnOf == .player {
+        if gameServer.isPlayerCreator {
+            // host actions
+            hostRoundResolve(playerMove: playerMove)
+            
+        }else {
+            // invitee actions
+            inviteeRoundResolve(playerMove: playerMove)
+        }
+        
+        
+    }else if game.turnOf == .enemy {
+        gameStateDescription = "Wait the enemy to move!"
+    }
+        
         
     }
+    
+    
+  private func hostRoundResolve(playerMove: Move) {
+      
+      game.playerMove = playerMove
+      game.turnOf = .enemy
+      
+      gameServer?.fetchMoves(gameID: game.gameID, completion: { moves in
+          self.game.moves = moves
+          self.gameServer?.updateGame(game: self.game, move: playerMove)
+      })
+      
+      
+      
+      gameStateDescription = "Waiting for enemy move"
+      checkScoreChange()
+    }
+    
+    
+    private func inviteeRoundResolve(playerMove: Move) {
+       
+        
+        // start timer to count the wait time
+        let startTime = Date().timeIntervalSince1970
+        let timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: false) { timer in
+            print("The enemy didn't make a move within 60 seconds.")
+            // do something more to highlight a stale game
+        }
+        // fetch the moves when updated
+       
+//            gameServer?.observeMoves(gameID: game.gameID, completion: { [weak self] moves in
+//                guard let self = self else { return }
+//                if let latestMove = moves.last(where: { $0.playerID == self.opponent.id }) {
+//                    print("found move = \(latestMove.move.rawValue) n moves = \(moves.count)")
+//                    if moves.count % 2 != 0 { // check if enemy has made a move
+//                        // Cancel the timer as the enemy has made a move
+//                        game.playerMove = playerMove
+//                        game.turnOf = .enemy
+//                        timer.invalidate()
+//                        self.game.moves = moves
+//                        self.game.enemyMove = latestMove.move
+//                        self.calculateRound()
+//
+//                        DispatchQueue.main.async {
+//                            let endTime = Date().timeIntervalSince1970
+//                            print("Time elapsed: \(endTime - startTime) seconds.")
+//                            self.enemyMoveString = self.game.enemyMove.rawValue
+//                            self.isGameOver = true
+//                            self.timerText = "\(Int(endTime - startTime))"
+//                        }
+//
+//                        self.gameServer?.updateGame(game: self.game, move: playerMove)
+//                    }
+//                }
+//            })
+        
+        gameServer?.fetchMoves(gameID: game.gameID, completion: { moves in
+          
+                           
+                            if let latestMove = moves.last(where: { $0.playerID == self.opponent.id }) {
+                                print("found move = \(latestMove.move.rawValue) n moves = \(moves.count)")
+                                if moves.count % 2 != 0 { // check if enemy has made a move
+                                    // Cancel the timer as the enemy has made a move
+                                    self.game.playerMove = playerMove
+                                    self.game.turnOf = .enemy
+                                    timer.invalidate()
+                                    self.game.moves = moves
+                                    self.game.enemyMove = latestMove.move
+                                    self.calculateRound()
+            
+                                    DispatchQueue.main.async {
+                                        let endTime = Date().timeIntervalSince1970
+                                        print("Time elapsed: \(endTime - startTime) seconds.")
+                                        self.enemyMoveString = self.game.enemyMove.rawValue
+                                        self.isGameOver = true
+                                        self.timerText = "\(Int(endTime - startTime))"
+                                    }
+            
+                                    self.gameServer?.updateGame(game: self.game, move: playerMove)
+                                }
+                            }
+        })
+
+        
+        
+    }
+    
+    
     
     
     private func resolveRound(playerMove: Move) {
@@ -250,10 +294,11 @@ class GameViewModel: ObservableObject {
     
     private func calculateRound() {
         let winner = compareMoves()
-        
-        game.calculateScores()
+        game.rounds += 1
+        //game.calculateScores()
         roundUIUpdate(winner: winner)
         
+        // send the new score info to the server
         
         roundResult = winner
         
@@ -272,12 +317,12 @@ class GameViewModel: ObservableObject {
     }
     private func roundUIUpdate(winner: Winner) {
         if winner == .player {
-           // game.playerScore += 1
+            game.playerScore += 1
                 // add info for user about the outcome
             endRoundTitle = "Round won!"
             endRoundImageName = "trophy.circle"
         }else if winner == .enemy {
-          //  game.enemyScore += 1
+            game.enemyScore += 1
             
             endRoundTitle = "Round lost..."
             endRoundImageName =  "xmark.seal"

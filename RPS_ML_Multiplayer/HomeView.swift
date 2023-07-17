@@ -17,6 +17,7 @@ struct HomeView: View {
    @State var showSettingsView: Bool = false
     @State private var signedIn: Bool = false
 
+    @State private var gameVM: GameViewModel? = nil
     
     @State var selectedPlayer: Opponent? = nil
     @State var selectedGame: GameModel? = nil
@@ -66,9 +67,9 @@ struct HomeView: View {
                     ForEach(serverManager.onlinePlayers, id: \.id) { player in
                         OnlinePlayerRow(player: player) {
                             // start new game with that player
-                            
+                            print("OnlinePlayerRow closure triggered with player \(player.id)")
                             selectedPlayer = player
-                            
+                            gameVM =  GameViewModel(serverManager: serverManager, opponent: player)
                             // present game screen
                             withAnimation(.easeInOut) {
                                 self.showContentView = true
@@ -102,6 +103,7 @@ struct HomeView: View {
                         GameRow(game: game) {
                             // join an existing game
                             selectedGame = game
+                            gameVM = GameViewModel(serverManager: serverManager, game: game)
                             self.showContentView = true
                         }
                     }
@@ -198,15 +200,17 @@ struct HomeView: View {
             
         }
         .fullScreenCover(isPresented: $showContentView, onDismiss: {
-            
+            showContentView = false
+            gameVM = nil
         }) {
-            
-            if let opponent = selectedPlayer {
-                let gameVM =  GameViewModel(serverManager: serverManager, opponent: opponent)
-                ContentView(viewModel: gameVM, show: $showContentView)
-            }else if let game = selectedGame {
-                let gameVM = GameViewModel(serverManager: serverManager, game: game)
-                ContentView(viewModel: gameVM, show: $showContentView)
+            if let gameVM = gameVM {
+                if let opponent = selectedPlayer {
+                    
+                    ContentView(viewModel: gameVM, show: $showContentView)
+                }else if let game = selectedGame {
+                  //  let gameVM = GameViewModel(serverManager: serverManager, game: game)
+                    ContentView(viewModel: gameVM, show: $showContentView)
+                }
             }
         }
         .onAppear {

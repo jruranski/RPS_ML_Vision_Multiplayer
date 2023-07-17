@@ -9,7 +9,7 @@ import Foundation
 
 
 class GameModel {
-    var rounds = 0
+    var rounds = 1
     var playerScore = 0
     var enemyScore = 0
     var playerMove: Move = .none
@@ -70,7 +70,7 @@ class GameModel {
         let turnOf = dict["turnOf"] as? String
         let currentTurn: Winner = turnOf == opponentID ? .enemy : .player
         self.init(
-            rounds: 0,
+            rounds: 1,
             playerScore: playerScore,
             enemyScore: enemyScore,
             player1: player1,
@@ -84,7 +84,7 @@ class GameModel {
     }
     
     init(
-        rounds: Int = 0,
+        rounds: Int = 1,
         playerScore: Int = 0,
         enemyScore: Int = 0,
         playerMove: Move = .none,
