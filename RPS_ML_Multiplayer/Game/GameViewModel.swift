@@ -105,8 +105,22 @@ class GameViewModel: ObservableObject {
     private func uiUpdateEnemyMove() {
         gameServer?.fetchMoves(gameID: game.gameID, completion: { moves in
             self.game.moves = moves
-            self.enemyMoveString = moves.last?.move.rawValue ?? "Rock"
+            let lastMove = moves.last ?? PlayerMove(move: .rock, playerID: "")
+            self.enemyMoveString = lastMove.move.rawValue
+            self.game.enemyMove = lastMove.move
         })
+        
+       
+        
+        let champion = game.getGameWinner() // get the winner of the whole game
+        
+        if champion != .none {gameOver(champion: champion);return}
+        
+        
+        
+        // reset the moves
+        game.playerMove = .none
+        game.enemyMove = .none
     }
     
     func startResolvingRound(playerMove: Move) {

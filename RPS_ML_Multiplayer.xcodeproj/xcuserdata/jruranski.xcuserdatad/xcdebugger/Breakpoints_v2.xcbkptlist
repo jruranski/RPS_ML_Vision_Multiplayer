@@ -1309,8 +1309,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "resolveRound(playerMove:)"
             landmarkType = "7">
             <Locations>
