@@ -283,8 +283,8 @@
             filePath = "RPS_ML_Multiplayer/ServerManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "fetchInvitedGames(completion:)"
             landmarkType = "7">
             <Locations>
@@ -436,8 +436,8 @@
             filePath = "RPS_ML_Multiplayer/ServerManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "fetchInvitedGames(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -452,8 +452,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "init(rounds:playerScore:enemyScore:playerMove:enemyMove:winner:player1:player2:gameID:finished:opponent:roundHistory:turnOf:)"
             landmarkType = "7">
             <Locations>
@@ -515,8 +515,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "init?(from:id:opponentID:opponentName:)"
             landmarkType = "7">
             <Locations>
@@ -668,8 +668,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "init?(from:id:opponentID:opponentName:)"
             landmarkType = "7">
             <Locations>
@@ -746,8 +746,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "init?(from:id:opponentID:opponentName:)"
             landmarkType = "7">
             <Locations>
@@ -1197,8 +1197,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "calculateScores()"
             landmarkType = "7">
             <Locations>
@@ -1293,8 +1293,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "init(rounds:playerScore:enemyScore:playerMove:enemyMove:winner:player1:player2:gameID:finished:opponent:roundHistory:turnOf:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1309,8 +1309,8 @@
             filePath = "RPS_ML_Multiplayer/Game/GameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "resolveRound(playerMove:)"
             landmarkType = "7">
             <Locations>
@@ -1581,54 +1581,6 @@
                   startingLineNumber = "89"
                   endingLineNumber = "89"
                   offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FBDC2FA7-3C2E-443F-94B9-534007A61F12"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RPS_ML_Multiplayer/HomeView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "FBDC2FA7-3C2E-443F-94B9-534007A61F12 - b238fc1456a1afc9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; Swift.Optional&lt;Swift.Optional&lt;SwiftUI._ConditionalContent&lt;RPS_ML_Multiplayer.ContentView, RPS_ML_Multiplayer.ContentView&gt;&gt;&gt; in RPS_ML_Multiplayer.HomeView.body.getter : some"
-                  moduleName = "RPS_ML_Multiplayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/HomeView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "207"
-                  endingLineNumber = "207"
-                  offsetFromSymbolStart = "808">
-               </Location>
-               <Location
-                  uuid = "FBDC2FA7-3C2E-443F-94B9-534007A61F12 - b238fc1456a1afee"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; Swift.Optional&lt;Swift.Optional&lt;SwiftUI._ConditionalContent&lt;RPS_ML_Multiplayer.ContentView, RPS_ML_Multiplayer.ContentView&gt;&gt;&gt; in RPS_ML_Multiplayer.HomeView.body.getter : some"
-                  moduleName = "RPS_ML_Multiplayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jruranski/Library/Mobile%20Documents/com~apple~CloudDocs/University/RPS_Multiplayer/RPS_ML_Multiplayer/RPS_ML_Multiplayer/HomeView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "208"
-                  endingLineNumber = "208"
-                  offsetFromSymbolStart = "808">
                </Location>
             </Locations>
          </BreakpointContent>

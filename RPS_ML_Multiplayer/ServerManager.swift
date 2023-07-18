@@ -236,11 +236,20 @@ class ServerManager: ObservableObject {
                         let oppID = participants.first(where: { id in
                             id != currentUserId
                         }) ?? "no_id"
-                        
-                        let game = GameModel(from: gameData, id: gameData["uid"] as? String ?? "no_id", opponentID: oppID, opponentName: Date(timeIntervalSince1970: gameData["created"] as? TimeInterval ?? 0).formatted())
-                        invitedGames.append(game ?? GameModel())
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MM-dd HH:mm:ss"
+                        let game = GameModel(from: gameData, id: gameData["uid"] as? String ?? "no_id", opponentID: oppID, opponentName: dateFormatter.string(from: Date(timeIntervalSince1970: gameData["created"] as? TimeInterval ?? 0)))
+                        let gameNotFinished = !(game?.finished ?? false)
+                        if  gameNotFinished {
+                            invitedGames.append(game ?? GameModel())
+                        }
                     }
                 }
+                
+                invitedGames.sort { game1, game2 in
+                    game1.createdDate > game2.createdDate
+                }
+                
                 
                 DispatchQueue.main.async {
                     completion(invitedGames)

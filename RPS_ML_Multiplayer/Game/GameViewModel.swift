@@ -221,6 +221,9 @@ class GameViewModel: ObservableObject {
                                         self.timerText = "\(Int(endTime - startTime))"
                                     }
             
+                                    
+                                    self.game.playerMove = .none
+                                    self.game.enemyMove = .none
                                     self.gameServer?.updateGame(game: self.game, move: playerMove)
                                 }
                             }
@@ -332,8 +335,8 @@ class GameViewModel: ObservableObject {
         
         
         // reset the moves
-        game.playerMove = .none
-        game.enemyMove = .none
+//        game.playerMove = .none
+//        game.enemyMove = .none
 //
         
         

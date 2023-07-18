@@ -172,28 +172,28 @@ struct HomeView: View {
 //            }
 //
             
-            Button(action: {
-             // invite players and start game
-                withAnimation(.easeInOut) {
-                    self.showContentView.toggle()
-                }
-            }) {
-                HStack {
-                    Spacer()
-                    Text("TEST")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-                    .foregroundColor(.primary)
-                    .padding()
-                    Spacer()
-            }
-                .background(Color(.systemGray6))
-                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color(.systemGray5), lineWidth: 2).opacity(0.8).blendMode(.overlay))
-                .padding(.horizontal)
-                
-            }
+//            Button(action: {
+//             // invite players and start game
+//                withAnimation(.easeInOut) {
+//                    self.showContentView.toggle()
+//                }
+//            }) {
+//                HStack {
+//                    Spacer()
+//                    Text("TEST")
+//                    .font(.subheadline)
+//                    .fontWeight(.bold)
+//                    .fontDesign(.rounded)
+//                    .foregroundColor(.primary)
+//                    .padding()
+//                    Spacer()
+//            }
+//                .background(Color(.systemGray6))
+//                .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
+//                .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(Color(.systemGray5), lineWidth: 2).opacity(0.8).blendMode(.overlay))
+//                .padding(.horizontal)
+//
+//            }
             
         
             
@@ -203,15 +203,7 @@ struct HomeView: View {
             showContentView = false
             gameVM = nil
         }) {
-            if let gameVM = gameVM {
-                if let opponent = selectedPlayer {
-                    
-                    ContentView(viewModel: gameVM, show: $showContentView)
-                }else if let game = selectedGame {
-                  //  let gameVM = GameViewModel(serverManager: serverManager, game: game)
-                    ContentView(viewModel: gameVM, show: $showContentView)
-                }
-            }
+           ContentView(viewModel: gameVM ?? GameViewModel(), show: $showContentView)
         }
         .onAppear {
             serverManager.refreshOnlinePlayers()

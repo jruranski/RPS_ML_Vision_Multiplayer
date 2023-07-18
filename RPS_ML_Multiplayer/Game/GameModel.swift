@@ -30,6 +30,18 @@ class GameModel {
     
     let maxScore = 3
     
+    var createdDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd HH:mm:ss"
+        if let date = dateFormatter.date(from: opponent.name) {
+            print("date formatted")
+            return date
+        }else{
+            print("cannot compute date")
+            return Date()
+        }
+    }
+    
 
     var turnOf: Winner = .player
     
