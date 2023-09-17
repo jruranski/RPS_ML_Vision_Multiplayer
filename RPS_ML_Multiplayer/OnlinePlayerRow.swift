@@ -34,9 +34,9 @@ struct OnlinePlayerRow: View {
             Button(action: {
                 // invite player to the game
                 tappedPlay()
-                withAnimation(.easeInOut) {
-                    selected.toggle()
-                }
+//                withAnimation(.easeInOut) {
+//                    selected.toggle()
+//                }
             }) {
                 Text("PLAY")
                     .font(.system(.caption, design: .rounded, weight: .bold))
@@ -46,6 +46,10 @@ struct OnlinePlayerRow: View {
             }.buttonStyle(PlainButtonStyle())
                 .modifier(ButtonModifier(backgroundColor: .blue ,opacity: selected ? 0.4 : 1))
                 .scaleEffect(selected ? 1.1 : 1)
+        }.onAppear {
+            withAnimation {
+                selected = false
+            }
         }
     }
 }

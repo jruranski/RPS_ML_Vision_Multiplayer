@@ -18,14 +18,19 @@ struct HomeView: View {
     @State private var signedIn: Bool = false
 
     @State private var gameVM: GameViewModel? = nil
-    
+    @State private var appeared = false
     @State var selectedPlayer: Opponent? = nil
     @State var selectedGame: GameModel? = nil
     var body: some View {
         VStack {
             HStack {
-            Text("RPS")
-                .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                VStack(alignment: .leading) {
+                    Text("RPS")
+                        .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                    Text(serverManager.getCurrentUser()?.uid ?? "")
+                        .font(.system(.body, design: .rounded, weight: .light))
+                }
+            
          Spacer()
         Image(systemName: "person") // Sign In button
                 .font(.system(.headline, design: .rounded, weight: .semibold))
@@ -38,6 +43,7 @@ struct HomeView: View {
                         self.showProfileView.toggle()
                     }
                 }
+                .padding()
                
                 .fullScreenCover(isPresented: $showProfileView) {
                     if serverManager.isSignedIn() {
@@ -67,7 +73,7 @@ struct HomeView: View {
                     ForEach(serverManager.onlinePlayers, id: \.id) { player in
                         OnlinePlayerRow(player: player) {
                             // start new game with that player
-                            print("OnlinePlayerRow closure triggered with player \(player.id)")
+                            print("OnlinePlayerRow closure triggered with player \(String(describing: player.id))")
                             selectedPlayer = player
                             gameVM =  GameViewModel(serverManager: serverManager, opponent: player)
                             // present game screen
@@ -202,12 +208,14 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $showContentView, onDismiss: {
             showContentView = false
             gameVM = nil
+            appeared.toggle()
         }) {
            ContentView(viewModel: gameVM ?? GameViewModel(), show: $showContentView)
         }
         .onAppear {
             serverManager.refreshOnlinePlayers()
             serverManager.refreshOnlineGames()
+            appeared.toggle()
         }
 
         .onChange(of: scenePhase) { newValue in

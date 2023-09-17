@@ -35,9 +35,9 @@ struct GameRow: View {
                 
                 playTapped()
                 // invite player to the game
-                withAnimation(.easeInOut) {
-                    selected.toggle()
-                }
+//                withAnimation(.easeInOut) {
+//                    selected.toggle()
+//                }
             }) {
                 Text("JOIN")
                     .font(.system(.caption, design: .rounded, weight: .bold))

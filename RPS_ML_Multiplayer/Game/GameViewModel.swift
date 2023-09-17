@@ -367,8 +367,12 @@ class GameViewModel: ObservableObject {
         let playerWon = champion == .player
         endRoundTitle = playerWon ? "You Won!" : "Enemy Won..."
         endRoundImageName = playerWon ? "checkmark" : "xmark"
-        game.finished = true
-        gameServer?.saveFinishedGame(game: game)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)) {
+            self.game.finished = true
+            self.gameServer?.saveFinishedGame(game: self.game)
+        }
+       
         
         
         

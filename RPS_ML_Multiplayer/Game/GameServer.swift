@@ -86,8 +86,10 @@ class GameServer {
         guard let user = self.user else {return}
         
         ref.child("games").child(gameID).child("turnOf").observe(.value) { snapshot in
+            print("my id  \(user.uid)")
             guard let turnOfValue = snapshot.value as? String,
                   let turnOf: Winner = turnOfValue == user.uid ? .player : .enemy
+
             else {
                 print("Error observing turnOf changes")
                 completion(nil)
@@ -299,12 +301,15 @@ class GameServer {
         
        // let id = game.opponent.id == user.uid ? user.id :
         
+        let winner = game.winner
+        
         let gameRef = ref.child("games").child(game.gameID)
         let gameData: [String: Any] = [
             user.uid : game.playerScore,
             game.opponent.id ?? game.player2 : game.enemyScore,
             "turnOf" : game.turnOf == .player ? user.uid : opponent?.id ?? "id_fault",
             "finished" : true,
+            "winner": winner == .player ? user.uid : game.opponent.id
             
             
         ]

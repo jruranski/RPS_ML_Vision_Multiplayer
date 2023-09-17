@@ -172,8 +172,9 @@ struct GameOverlay: View {
                 
             }
             .padding(.bottom, 40)
-            .background(BlurView(style: .systemMaterial))
-            .cornerRadius(12)
+            .background(BlurView(style: .systemMaterial).edgesIgnoringSafeArea(.all))
+            .cornerRadius(16)
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: -16)
         }.ignoresSafeArea(.all)
             .onChange(of: viewModel.isGameOver) { newValue in
                 shouldStopCamera = newValue
@@ -182,9 +183,9 @@ struct GameOverlay: View {
                 
                 // #todo display the game over screen first!
                 
-                withAnimation(.easeInOut) {
-                    self.show = false
-                }
+//                withAnimation(.easeInOut) {
+//                    self.show = false
+//                }
             }
     }
 }
