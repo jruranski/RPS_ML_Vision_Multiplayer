@@ -147,25 +147,158 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35D314C72A56F1B900D12796 /* Game */ = {
+		3573E29C2B0410E500B27877 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3573E2AA2B0412AF00B27877 /* Profile */,
+				3573E2A72B0411E300B27877 /* ModalViews */,
+				3573E2A62B0411D700B27877 /* Settings */,
+				3573E2A52B04117300B27877 /* Game */,
+				3573E2A42B04116800B27877 /* GameSelection */,
+				3573E2A32B04116300B27877 /* Auth */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3573E29D2B0410EC00B27877 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				35D314C32A56F13E00D12796 /* GameModel.swift */,
+				35D314CE2A5714A000D12796 /* OpponentDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3573E29E2B0410F800B27877 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				35D314C52A56F1B400D12796 /* GameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3573E29F2B04112400B27877 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				35D315072A5BF69C00D12796 /* GameServer.swift */,
+				35D315032A5BF17200D12796 /* ServerManager.swift */,
+				35E9AC352A55AD1E000C369E /* FrameHandler.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3573E2A02B04112D00B27877 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3573E2A92B04129A00B27877 /* UIKit */,
+				35E9AC3D2A55C9EE000C369E /* Helpers.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		3573E2A12B04113F00B27877 /* Lifetime */ = {
+			isa = PBXGroup;
+			children = (
+				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
+			);
+			path = Lifetime;
+			sourceTree = "<group>";
+		};
+		3573E2A22B04114700B27877 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				35D314E32A5996DD00D12796 /* GradientViews */,
+				35D314D42A5719BF00D12796 /* GameOverlayElements */,
+				35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */,
+				35E9AC332A55ACC9000C369E /* FrameView.swift */,
+				35D314D72A58098C00D12796 /* OnlinePlayerRow.swift */,
+				35D3150B2A5D4F6F00D12796 /* GameRow.swift */,
+				35D314E42A59971E00D12796 /* TextfieldIcon.swift */,
+				35D3150D2A5D695C00D12796 /* GradientProfilePicture.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3573E2A32B04116300B27877 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				35D314DD2A59965F00D12796 /* SignUpView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		3573E2A42B04116800B27877 /* GameSelection */ = {
+			isa = PBXGroup;
+			children = (
+				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
+				35D314D52A57F6E200D12796 /* HomeView.swift */,
+			);
+			path = GameSelection;
+			sourceTree = "<group>";
+		};
+		3573E2A52B04117300B27877 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				35E9AC392A55C847000C369E /* GameOverlay.swift */,
-				35D314D42A5719BF00D12796 /* OverlayElements */,
-				35D314C32A56F13E00D12796 /* GameModel.swift */,
-				35D314C52A56F1B400D12796 /* GameViewModel.swift */,
-				35D315072A5BF69C00D12796 /* GameServer.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
 		};
-		35D314D42A5719BF00D12796 /* OverlayElements */ = {
+		3573E2A62B0411D700B27877 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				35D314D92A59928200D12796 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		3573E2A72B0411E300B27877 /* ModalViews */ = {
+			isa = PBXGroup;
+			children = (
+				35D314DB2A59929000D12796 /* GameOverView.swift */,
+			);
+			path = ModalViews;
+			sourceTree = "<group>";
+		};
+		3573E2A82B04123F00B27877 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				35D314CC2A57141B00D12796 /* RPS_ML_trained.mlmodel */,
+			);
+			path = ML;
+			sourceTree = "<group>";
+		};
+		3573E2A92B04129A00B27877 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				35D314E62A59975400D12796 /* VisualEffectBlur.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		3573E2AA2B0412AF00B27877 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				35D314E82A599DC300D12796 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		35D314C72A56F1B900D12796 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35E9AC0D2A55AC22000C369E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		35D314D42A5719BF00D12796 /* GameOverlayElements */ = {
 			isa = PBXGroup;
 			children = (
 				35D314D22A57193900D12796 /* RPSButtons.swift */,
 				35D314D02A57163700D12796 /* RoundDetail.swift */,
 			);
-			path = OverlayElements;
+			path = GameOverlayElements;
 			sourceTree = "<group>";
 		};
 		35D314E32A5996DD00D12796 /* GradientViews */ = {
@@ -200,30 +333,17 @@
 		35E9AC082A55AC20000C369E /* RPS_ML_Multiplayer */ = {
 			isa = PBXGroup;
 			children = (
+				3573E2A82B04123F00B27877 /* ML */,
+				3573E2A22B04114700B27877 /* Components */,
+				3573E2A12B04113F00B27877 /* Lifetime */,
+				3573E2A02B04112D00B27877 /* Utility */,
+				3573E29F2B04112400B27877 /* Services */,
+				3573E29E2B0410F800B27877 /* ViewModels */,
+				3573E29D2B0410EC00B27877 /* Models */,
+				3573E29C2B0410E500B27877 /* Views */,
+				35D314C72A56F1B900D12796 /* Resources */,
 				35D314FF2A5AB9AB00D12796 /* GoogleService-Info.plist */,
-				35D314CC2A57141B00D12796 /* RPS_ML_trained.mlmodel */,
-				35E9AC092A55AC20000C369E /* RPS_ML_MultiplayerApp.swift */,
-				35D314D52A57F6E200D12796 /* HomeView.swift */,
-				35D3150B2A5D4F6F00D12796 /* GameRow.swift */,
-				35D315032A5BF17200D12796 /* ServerManager.swift */,
-				35E9AC0B2A55AC20000C369E /* ContentView.swift */,
-				35D314C72A56F1B900D12796 /* Game */,
-				35E9AC3D2A55C9EE000C369E /* Helpers.swift */,
-				35E9AC3B2A55C8C4000C369E /* PredictionButton.swift */,
-				35E9AC332A55ACC9000C369E /* FrameView.swift */,
-				35E9AC352A55AD1E000C369E /* FrameHandler.swift */,
-				35E9AC0D2A55AC22000C369E /* Assets.xcassets */,
 				35E9AC0F2A55AC22000C369E /* Preview Content */,
-				35D314CE2A5714A000D12796 /* OpponentDataModel.swift */,
-				35D314D72A58098C00D12796 /* OnlinePlayerRow.swift */,
-				35D314D92A59928200D12796 /* SettingsView.swift */,
-				35D314DB2A59929000D12796 /* GameOverView.swift */,
-				35D314DD2A59965F00D12796 /* SignUpView.swift */,
-				35D314E42A59971E00D12796 /* TextfieldIcon.swift */,
-				35D314E62A59975400D12796 /* VisualEffectBlur.swift */,
-				35D314E32A5996DD00D12796 /* GradientViews */,
-				35D314E82A599DC300D12796 /* ProfileView.swift */,
-				35D3150D2A5D695C00D12796 /* GradientProfilePicture.swift */,
 			);
 			path = RPS_ML_Multiplayer;
 			sourceTree = "<group>";
